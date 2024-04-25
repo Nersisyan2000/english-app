@@ -1,0 +1,7 @@
+export const Colors = {
+  INPUT_BACKGROUND: "#EFF5FB",
+  FOREGROUND_DEFAULT: "#344054",
+  PURPLE: "#8833FF",
+  WHITE: "#FFFFFF",
+  BACKGROUND_COLOR: "#F7F8FA",
+};

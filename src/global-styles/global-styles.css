@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap");
+
+.titleStyle {
+  font-family: "Inter", sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
