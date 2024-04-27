@@ -6,5 +6,19 @@
   "ENTER_YOUR_PASSWORD": "Enter your password",
   "FORGOT": "Forgot",
   "SUBMIT": "Submit",
-  "LOGIN_NOW": "Login now"
+  "LOGIN_NOW": "Login now",
+  "SUBSCRIPTION": "Subscription",
+  "REGISTERED": "Registered",
+  "CANCELED": "Canceled",
+  "ACTIVE_USER": "Active User",
+  "ENGLISH_APP": "English app",
+  "DASHBOARD": "Dashboard",
+  "NATIVE_LANGUAGE": "Native Language",
+  "LEARNING_LANGUAGE": "Learning language",
+  "WORDS": "Words",
+  "CATEGORY": "Category",
+  "USER": "User",
+  "FEEDBACK": "Feedback",
+  "NOTIFICATION": "Notification",
+  "FILES": "Files"
 }

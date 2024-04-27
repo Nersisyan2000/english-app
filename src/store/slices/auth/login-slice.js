@@ -23,7 +23,11 @@ export const loginThunk = createAsyncThunk(
 export const loginSlice = createSlice({
   name: "login",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteReduxToken: (state) => {
+      state.loginResponse.token = "";
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(loginThunk.pending, (state) => {
       state.loading = true;
@@ -39,12 +43,14 @@ export const loginSlice = createSlice({
   },
 });
 
+export const { deleteReduxToken } = loginSlice.actions;
+
 export const getLoginLoading = (state) => {
-  return state.loading;
+  return state.loginSlice.loading;
 };
 export const getLoginData = (state) => {
-  return state.loginResponse;
+  return state.loginSlice.loginResponse;
 };
 export const getLoginError = (state) => {
-  return state.loginErrors;
+  return state.loginSlice.loginErrors;
 };

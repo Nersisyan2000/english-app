@@ -1,7 +1,7 @@
 import React from "react";
 import "./custom-button.css";
 import { useTranslation } from "react-i18next";
-import { Colors } from "../../assets/colors";
+import { Colors } from "../../assets/colors/colors";
 
 export const CustomButton = ({ handleSubmit }) => {
   const { t } = useTranslation();

@@ -1,8 +1,7 @@
 import React from "react";
 import "./custom-input-styl.css";
 import { useTranslation } from "react-i18next";
-import { Field } from "formik";
-import { Colors } from "../../assets/colors";
+import { Colors } from "../../assets/colors/colors";
 
 export const CustomInputField = ({
   name,
