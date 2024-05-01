@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import headerLeftIcon from "../../assets/images/button.svg";
 import bellIcon from "../../assets/images/bellIcon.svg";
 import messageIcon from "../../assets/images/messageIcon.svg";
@@ -5,15 +6,19 @@ import membersIcon from "../../assets/images/membersIcon.svg";
 import statisticIcon from "../../assets/images/statisticsIcon.svg";
 import logOutIcon from "../../assets/images/logout-svgrepo-com.svg";
 import { deleteReduxToken } from "../../store/slices/auth/login-slice";
+import { useMediaQuery } from 'react-responsive';
 
 import { Badge } from "antd";
 import "./custom-header.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { CustomDrawer } from '../custom-drawer/custom-drawer';
 
 export const CustomHeader = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [open, setOpen] = useState(false);
+  const isSmallScreen = useMediaQuery({ maxWidth: 768 });
 
   const logOut = () => {
     localStorage.clear();
@@ -25,7 +30,8 @@ export const CustomHeader = () => {
     <div className="customHeaderApp">
       <header className="appHeader">
         <div className="headerFirstPart">
-          <img src={headerLeftIcon} className="headerIconFirst" alt="" />
+          {isSmallScreen ? <img src={headerLeftIcon} className="headerIconFirst" alt="" onClick={() => setOpen(true)}/> : null}
+          <CustomDrawer open={open} setOpen={setOpen}/>
           <p className="headertitle">English app</p>
         </div>
         <div className="headerSecondPart">

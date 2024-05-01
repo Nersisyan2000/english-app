@@ -31,6 +31,7 @@
 
   .dashboardScreenItem {
     flex-direction: column;
+
   }
 }
 
@@ -41,5 +42,6 @@
 
   .dashboardScreenItem {
     flex-direction: column;
+    padding-bottom: 60px;
   }
 }
