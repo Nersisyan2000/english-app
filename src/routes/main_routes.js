@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { CustomHeader } from "../components/custom-header/custom-header";
 import { CustomSidebar } from "../components/custom-sidebar/custom-sidebar";
 import { DashboardScreen } from "../screens/dashboard-screen/dashboard-screen";
-import { NativeLanguage } from "../screens/native-language/native-language";
+import { NativeLanguageScreen } from "../screens/native-language-screen/native-language-screen";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -25,7 +25,7 @@ export const MyRoutes = () => {
             <Route element={<CustomSidebar />}>
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
-              <Route path="/native-language" element={<NativeLanguage />} />
+              <Route path="/native-language" element={<NativeLanguageScreen />} />
             </Route>
           </Route>
         </Routes>

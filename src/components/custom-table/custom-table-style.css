@@ -1,0 +1,12 @@
+.ant-table-wrapper .ant-table-thead tr th {
+    background-color: transparent;
+    border: none;
+}
+
+.ant-table-wrapper .ant-table-pagination.ant-pagination {
+    display: none;
+}
+
+.ant-table-wrapper .ant-table-tbody  tr  th {
+    border: none;
+}

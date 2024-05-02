@@ -21,6 +21,11 @@
 
 .dashboardScreenItem {
   display: flex;
+  flex-direction: column;
+}
+
+.dashboardScreenFirstLine {
+  display: flex;
   flex-direction: row;
 }
 
