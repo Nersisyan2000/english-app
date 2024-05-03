@@ -7,3 +7,6 @@ export * from "./custom-statistics";
 export * from "./custom-table";
 export * from "./custom-add-new";
 export * from "./custom-country-item";
+export * from "./custom-select";
+export * from "./custom-card-item";
+export * from "./custom-pagination"

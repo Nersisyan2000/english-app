@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { HomeScreen, LoginScreen } from "../screens";
+import { CategoryScreen, HomeScreen, LoginScreen } from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
 import { useSelector } from "react-redux";
@@ -26,6 +26,7 @@ export const MyRoutes = () => {
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
               <Route path="/native-language" element={<NativeLanguageScreen />} />
+              <Route path="/category" element={<CategoryScreen />} />
             </Route>
           </Route>
         </Routes>
