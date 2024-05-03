@@ -1,0 +1,18 @@
+.customCountryItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 15px 15px 15px 21px;
+    box-shadow: 0px 2px 5px 0px #26334D08;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    min-width: 222px;
+}
+
+.customCountryItemTitle {
+    font-family: Roboto;
+    font-weight: 700;
+    font-size: 13px;
+}
