@@ -16,3 +16,23 @@
     font-weight: 700;
     font-size: 13px;
 }
+
+@media only screen and (max-width: 1024px) {
+    .customCountryItem {
+        min-width: 150px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .customCountryItem {
+        min-width: 176px;
+        margin: 10px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .customCountryItem {
+        min-width: 150px;
+        margin: 10px;
+    }
+}
