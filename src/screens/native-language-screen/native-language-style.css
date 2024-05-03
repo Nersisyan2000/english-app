@@ -1,4 +1,18 @@
 .nativeLanguageScreenMainDiv {
     width: 100%;
-    padding: 60px 92px 30px 92px;
+    padding: 60px 82px 30px 82px;
+    background-color: white;
+    border-radius: 50px;
+}
+
+.nativeLanguageTitle {
+    font-family: Roboto;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 17px 0;
+}
+
+.nativeLanguageCountryItems {
+    display: flex;
+    flex-wrap: wrap;
 }
