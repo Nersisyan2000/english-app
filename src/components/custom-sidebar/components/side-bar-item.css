@@ -36,3 +36,18 @@
 .css-1k2u9zb-MuiChartsAxis-root {
   display: none;
 }
+@media screen and (max-width: 768px) {
+  .sideBarItem {
+    width: 250px;
+  }
+  .sideBarItemTitle {
+   word-break: break-all;
+  }
+  
+.countStyle {
+ 
+  margin-left: 40px;
+}
+
+}
+

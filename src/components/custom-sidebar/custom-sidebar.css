@@ -5,6 +5,8 @@
   margin-right: 28px;
 }
 
+
+
 .css-3dcfwk-MuiBarElement-root,
 .css-1qdzy9k-MuiBarElement-root,
 .css-adnr9q-MuiBarElement-root {
@@ -16,4 +18,10 @@
 .projectOutlet {
   display: flex;
   flex-direction: row;
+}
+
+@media screen and (max-width: 768px) {
+  .sideBarComponent{
+    display: none;
+  }
 }
