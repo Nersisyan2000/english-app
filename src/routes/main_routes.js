@@ -14,6 +14,7 @@ import { CustomHeader } from "../components/custom-header/custom-header";
 import { CustomSidebar } from "../components/custom-sidebar/custom-sidebar";
 import { DashboardScreen } from "../screens/dashboard-screen/dashboard-screen";
 import { NativeLanguageScreen } from "../screens/native-language-screen/native-language-screen";
+import { NativeLanguageCretae } from "../screens/native-language-screen/native-language-cretae-form";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -23,7 +24,8 @@ export const MyRoutes = () => {
     <>
       {!token && !loginData?.token ? (
         <Routes>
-          <Route path="/" element={<ResetSendPasswordScreen />} />
+            <Route path="/" element={<LoginScreen/>} />
+          <Route path="/resetPassword" element={<ResetSendPasswordScreen />} />
           <Route path="/sendEmail" element={<ResetSendPasswordScreen />}/>
         </Routes>
       ) : (
@@ -34,6 +36,8 @@ export const MyRoutes = () => {
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
               <Route path="/native-language" element={<NativeLanguageScreen />} />
+              <Route path="/native-language-create" element={<NativeLanguageCretae />} />
+
               <Route path="/learning-language" element={<LearningLanguageScreen />} />
               <Route path="/category" element={<CategoryScreen />} />
             </Route>

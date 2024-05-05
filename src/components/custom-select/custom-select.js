@@ -2,7 +2,6 @@ import { Select } from "antd";
 
 export const CustomSelect = ({title}) => {
     const handleChange = (value) => {
-        console.log(`selected ${value}`);
     };
     return (
         <div>

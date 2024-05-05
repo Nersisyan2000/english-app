@@ -19,7 +19,6 @@ export const ResetPasswordEmail = () => {
                     initialValues={{ username: "", password: "" }}
                     onSubmit={(values) => {
                         dispatch(sendEmailThunk(values))
-                        console.log(values);
                     }}
                     // validationSchema={loginValidatoinSchema}
                     >

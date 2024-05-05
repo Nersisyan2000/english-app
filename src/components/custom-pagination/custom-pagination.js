@@ -6,7 +6,6 @@ import "./custom-pagination.css"
 export const CustomPagination = () => {
 
     const onShowSizeChange = (current, pageSize) => {
-        console.log(current, pageSize);
     };
     return (
         <div>
