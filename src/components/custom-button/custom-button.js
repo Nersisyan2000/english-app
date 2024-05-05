@@ -3,7 +3,7 @@ import "./custom-button.css";
 import { useTranslation } from "react-i18next";
 import { Colors } from "../../assets/colors/colors";
 
-export const CustomButton = ({ handleSubmit }) => {
+export const CustomButton = ({ handleSubmit, buttonTitle }) => {
   const { t } = useTranslation();
 
   return (
@@ -14,7 +14,7 @@ export const CustomButton = ({ handleSubmit }) => {
         onClick={handleSubmit}
         type="submit"
       >
-        {t("LOGIN_NOW")}
+        {buttonTitle}
       </button>
     </div>
   );

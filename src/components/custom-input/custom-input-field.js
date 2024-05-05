@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./custom-input-styl.css";
 import { useTranslation } from "react-i18next";
 import { Colors } from "../../assets/colors/colors";
+import eyeIcon from '../../assets/images/eyeIcon.svg';
 
 export const CustomInputField = ({
   name,
@@ -10,8 +11,14 @@ export const CustomInputField = ({
   isForgot,
   onChange,
   onBlur,
+  type
 }) => {
   const { t } = useTranslation();
+  const [isDisplayed, setIsDisplayed] = useState(false);
+  
+  const onDisplayed = () => {
+    setIsDisplayed(!isDisplayed);
+  }
 
   return (
     <div className="customInputMainDiv">
@@ -27,14 +34,18 @@ export const CustomInputField = ({
           </a>
         ) : null}
       </div>
-      <input
-        name={name}
-        placeholder={placeholder}
-        onChange={onChange}
-        onBlur={onBlur}
-        className="inputStyle"
-        style={{ backgroundColor: Colors.INPUT_BACKGROUND }}
-      />
+      <div className="customInputDiv" style={{ backgroundColor: Colors.INPUT_BACKGROUND } }>
+        <input
+          name={name}
+          type={isDisplayed ? 'text' : type}
+          placeholder={placeholder}
+          onChange={onChange}
+          onBlur={onBlur}
+          className="inputStyle"
+          style={{ backgroundColor: Colors.INPUT_BACKGROUND }}
+        />
+        <img src={eyeIcon} className="passwordFieldEyeIcon" onClick={onDisplayed}/>
+      </div>
     </div>
   );
 };

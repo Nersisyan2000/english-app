@@ -1,5 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { CategoryScreen, HomeScreen, LearningLanguageScreen, LoginScreen } from "../screens";
+import { 
+  CategoryScreen, 
+  HomeScreen, 
+  LearningLanguageScreen, 
+  LoginScreen, 
+  ResetPasswordEmail, 
+  ResetSendPasswordScreen
+} from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
 import { useSelector } from "react-redux";
@@ -16,7 +23,8 @@ export const MyRoutes = () => {
     <>
       {!token && !loginData?.token ? (
         <Routes>
-          <Route path="/" element={<LoginScreen />} />
+          <Route path="/" element={<ResetSendPasswordScreen />} />
+          <Route path="/sendEmail" element={<ResetSendPasswordScreen />}/>
         </Routes>
       ) : (
         <Routes>

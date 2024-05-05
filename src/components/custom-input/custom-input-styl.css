@@ -24,8 +24,13 @@
   text-decoration: none;
 }
 
+.customInputDiv {
+  display: flex;
+  border-radius: 15px;
+}
+
 .inputStyle {
-  width: 400px;
+  width: 346px;
   padding: 30px;
   border-radius: 15px;
   border: none;
@@ -42,4 +47,9 @@
 
 input:focus::-webkit-input-placeholder {
   color: #344054;
+}
+
+.passwordFieldEyeIcon {
+  margin: 0;
+  padding: 0;
 }

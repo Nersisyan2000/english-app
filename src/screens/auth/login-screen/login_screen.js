@@ -15,10 +15,10 @@ export const LoginScreen = () => {
 
   return (
     <div
-      className="loginScreenMainDiv"
+      className="authScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE }}
     >
-      <div className="loginScreenSubDiv">
+      <div className="authScreenSubDiv">
         <p className="titleStyle">{t("LOGIN_TO_YOUR_ACCOUNT")}</p>
         <Formik
           initialValues={{ username: "", password: "" }}
@@ -61,7 +61,7 @@ export const LoginScreen = () => {
               <p style={{ color: Colors.RED }}>
                 {errors.password && touched.password && errors.password}
               </p>
-              <CustomButton />
+              <CustomButton buttonTitle={t("LOGIN_NOW")}/>
             </form>
           )}
         </Formik>

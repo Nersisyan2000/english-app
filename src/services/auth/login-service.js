@@ -1,9 +1,8 @@
 import axios from "axios";
 
 export const sendLoginInfo = (data) => {
-  return axios.post("https://dummyjson.com/auth/login", {
-    username: "kminchelle",
-    password: "0lelplR",
-    expiresInMins: 30,
+  return axios.post("http://localhost:4000/api/admin/auth/login", {
+    email: data.username,
+    password: data.password,
   });
 };

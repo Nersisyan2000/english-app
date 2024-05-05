@@ -12,6 +12,7 @@ export const loginThunk = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await sendLoginInfo(data);
+      console.log(response.data, 'login response');
       localStorage.setItem("token", response.data.token);
       return response.data;
     } catch (error) {

@@ -21,5 +21,9 @@
   "FEEDBACK": "Feedback",
   "NOTIFICATION": "Notification",
   "FILES": "Files",
-  "SUBSCRIBE": "Subscribe"
+  "SUBSCRIBE": "Subscribe",
+  "RESET_PASSWORD": "Reset Password",
+  "SEND_CODE": "Send Code",
+  "NEW_PASSWORD": "New Password",
+  "CONFIRM_PASSWORD": "Confirm Password"
 }
