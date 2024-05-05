@@ -21,7 +21,7 @@ export const LoginScreen = () => {
       <div className="authScreenSubDiv">
         <p className="titleStyle">{t("LOGIN_TO_YOUR_ACCOUNT")}</p>
         <Formik
-          initialValues={{ username: "", password: "" }}
+          initialValues={{ email: "", password: "" }}
           onSubmit={(values) => {
             dispatch(loginThunk(values));
           }}
@@ -38,7 +38,7 @@ export const LoginScreen = () => {
             <form onSubmit={handleSubmit} autoComplete="off">
               <CustomInputField
                 type="text"
-                name="username"
+                name="email"
                 label={t("EMAIL")}
                 placeholder={t("EMAIL_PLACEHOLDER")}
                 onChange={handleChange}
@@ -46,7 +46,7 @@ export const LoginScreen = () => {
                 value={values.email}
               />
               <p style={{ color: Colors.RED }}>
-                {errors.username && touched.username && errors.username}
+                {errors.email && touched.email && errors.email}
               </p>
               <CustomInputField
                 type="password"
@@ -57,11 +57,12 @@ export const LoginScreen = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
+                isPassword={true}
               />
               <p style={{ color: Colors.RED }}>
                 {errors.password && touched.password && errors.password}
               </p>
-              <CustomButton buttonTitle={t("LOGIN_NOW")}/>
+              <CustomButton buttonTitle={t("LOGIN_NOW")} />
             </form>
           )}
         </Formik>

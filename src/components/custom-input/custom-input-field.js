@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./custom-input-styl.css";
 import { useTranslation } from "react-i18next";
 import { Colors } from "../../assets/colors/colors";
-import eyeIcon from '../../assets/images/eyeIcon.svg';
+import eyeIcon from "../../assets/images/eyeIcon.svg";
 
 export const CustomInputField = ({
   name,
@@ -11,14 +11,15 @@ export const CustomInputField = ({
   isForgot,
   onChange,
   onBlur,
-  type
+  type,
+  isPassword,
 }) => {
   const { t } = useTranslation();
   const [isDisplayed, setIsDisplayed] = useState(false);
-  
+
   const onDisplayed = () => {
     setIsDisplayed(!isDisplayed);
-  }
+  };
 
   return (
     <div className="customInputMainDiv">
@@ -34,17 +35,26 @@ export const CustomInputField = ({
           </a>
         ) : null}
       </div>
-      <div className="customInputDiv" style={{ backgroundColor: Colors.INPUT_BACKGROUND } }>
+      <div
+        className="customInputDiv"
+        style={{ backgroundColor: Colors.INPUT_BACKGROUND }}
+      >
         <input
           name={name}
-          type={isDisplayed ? 'text' : type}
+          type={isDisplayed ? "text" : type}
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}
           className="inputStyle"
           style={{ backgroundColor: Colors.INPUT_BACKGROUND }}
         />
-        <img src={eyeIcon} className="passwordFieldEyeIcon" onClick={onDisplayed}/>
+        {isPassword ? (
+          <img
+            src={eyeIcon}
+            className="passwordFieldEyeIcon"
+            onClick={onDisplayed}
+          />
+        ) : null}
       </div>
     </div>
   );

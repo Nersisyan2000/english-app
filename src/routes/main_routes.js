@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import { 
-  CategoryScreen, 
-  HomeScreen, 
-  LearningLanguageScreen, 
-  LoginScreen, 
-  ResetPasswordEmail, 
-  ResetSendPasswordScreen
+import {
+  CategoryScreen,
+  HomeScreen,
+  LearningLanguageScreen,
+  LoginScreen,
+  ResetPasswordEmail,
+  ResetSendPasswordScreen,
+  EmailVeraficationScreen,
 } from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
@@ -21,10 +22,15 @@ export const MyRoutes = () => {
 
   return (
     <>
-      {!token && !loginData?.token ? (
+      {token && loginData?.token ? (
         <Routes>
-          <Route path="/" element={<ResetSendPasswordScreen />} />
-          <Route path="/sendEmail" element={<ResetSendPasswordScreen />}/>
+          <Route path="/" element={<LoginScreen />} />
+          <Route path="/sendEmail" element={<ResetPasswordEmail />} />
+          <Route path="/resetPassword" element={<ResetSendPasswordScreen />} />
+          <Route
+            path="/emailVerafication"
+            element={<EmailVeraficationScreen />}
+          />
         </Routes>
       ) : (
         <Routes>
@@ -33,8 +39,14 @@ export const MyRoutes = () => {
             <Route element={<CustomSidebar />}>
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
-              <Route path="/native-language" element={<NativeLanguageScreen />} />
-              <Route path="/learning-language" element={<LearningLanguageScreen />} />
+              <Route
+                path="/native-language"
+                element={<NativeLanguageScreen />}
+              />
+              <Route
+                path="/learning-language"
+                element={<LearningLanguageScreen />}
+              />
               <Route path="/category" element={<CategoryScreen />} />
             </Route>
           </Route>

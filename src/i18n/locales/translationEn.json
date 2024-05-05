@@ -25,5 +25,10 @@
   "RESET_PASSWORD": "Reset Password",
   "SEND_CODE": "Send Code",
   "NEW_PASSWORD": "New Password",
-  "CONFIRM_PASSWORD": "Confirm Password"
+  "CONFIRM_PASSWORD": "Confirm Password",
+  "EMAIL_VERIFICATION": "Email Verification",
+  "EMAIL_VERIFICATION_DESCRIPTION_PART_ONE": "We've sent an verification to emailaddress@gmail.com to",
+  "EMAIL_VERIFICATION_DESCRIPTION_PART_TWO": "verify your email address and activate your account.",
+  "DONT_RECEIVE_CODE": "Didn’t receive code?",
+  "RESEND": "Resend"
 }

@@ -10,7 +10,7 @@ export const LearningLanguageScreen = () => {
 
     return (
         <div className='learningLanguageScreenMainDiv' style={{backgroundColor: Colors.WHITE}}>
-            <div>
+            <div className='learningLanguageScreenSubDiv'>
                 <div className='learningLanguageScreenAddNewDiv'>
                     <CustomAddNew title={"Add New Language"}/>
                 </div>
