@@ -5,7 +5,8 @@ import {
   LearningLanguageScreen, 
   LoginScreen, 
   ResetPasswordEmail, 
-  ResetSendPasswordScreen
+  ResetSendPasswordScreen,
+  WordsScreen
 } from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
@@ -24,7 +25,7 @@ export const MyRoutes = () => {
     <>
       {!token && !loginData?.token ? (
         <Routes>
-            <Route path="/" element={<LoginScreen/>} />
+          <Route path="/" element={<LoginScreen/>} />
           <Route path="/resetPassword" element={<ResetSendPasswordScreen />} />
           <Route path="/sendEmail" element={<ResetSendPasswordScreen />}/>
         </Routes>
@@ -37,7 +38,7 @@ export const MyRoutes = () => {
               <Route path="/statistics" element={<StatisticsScreen />} />
               <Route path="/native-language" element={<NativeLanguageScreen />} />
               <Route path="/native-language-create" element={<NativeLanguageCretae />} />
-
+              <Route path="/words" element={<WordsScreen />}/>
               <Route path="/learning-language" element={<LearningLanguageScreen />} />
               <Route path="/category" element={<CategoryScreen />} />
             </Route>

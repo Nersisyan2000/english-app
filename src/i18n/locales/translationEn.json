@@ -25,5 +25,8 @@
   "RESET_PASSWORD": "Reset Password",
   "SEND_CODE": "Send Code",
   "NEW_PASSWORD": "New Password",
-  "CONFIRM_PASSWORD": "Confirm Password"
+  "CONFIRM_PASSWORD": "Confirm Password",
+  "ADD_NEW_WORDS": "Add New Words",
+  "ADD_WORDS_FROM_EXCEL": "Add  Words From Excel",
+  "UPDATE_WORDS_FROM_EXCEL": "Update Words From Excel"
 }

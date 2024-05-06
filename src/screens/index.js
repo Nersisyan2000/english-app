@@ -4,4 +4,4 @@ export * from './dashboard-screen';
 export * from './native-language-screen';
 export * from './category-screen';
 export * from './learning-language-screen';
-
+export * from './words-screen';
