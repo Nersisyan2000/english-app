@@ -12,7 +12,12 @@ import { useDispatch } from 'react-redux';
 export const NativeLanguageScreen = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const data  = {"skip":0};
+    const data = {
+
+        skip: 1,
+        limit: 10
+
+    }
     useEffect(() => {
         dispatch(nativeLanguageGetThunk(data))
     }, [])

@@ -15,6 +15,7 @@ import { CustomSidebar } from "../components/custom-sidebar/custom-sidebar";
 import { DashboardScreen } from "../screens/dashboard-screen/dashboard-screen";
 import { NativeLanguageScreen } from "../screens/native-language-screen/native-language-screen";
 import { NativeLanguageCretae } from "../screens/native-language-screen/native-language-cretae-form";
+import { CategoryCretae } from "../screens/category-screen/category-screen-create-from";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -40,6 +41,8 @@ export const MyRoutes = () => {
 
               <Route path="/learning-language" element={<LearningLanguageScreen />} />
               <Route path="/category" element={<CategoryScreen />} />
+              <Route path="/category-create" element={<CategoryCretae />} />
+
             </Route>
           </Route>
         </Routes>

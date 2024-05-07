@@ -4,6 +4,15 @@
     border-radius: 10px !important;
 }
 
+.categoryScreenMainDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px 82px 30px 82px;
+    background-color: white;
+    border-radius: 50px;
+}
+
 .ant-select-selector{
     padding: 25px 15px !important;
     background: #F7F8FA !important;
@@ -58,4 +67,11 @@
     width: 100%;
     justify-content: center;
     margin-top: 40px;
+}
+
+.category_row_input{
+    display: flex;
+    flex-direction: row;
+    width: 420px;
+    justify-content: space-between;
 }
