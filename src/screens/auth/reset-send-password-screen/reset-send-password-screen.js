@@ -64,3 +64,50 @@ export const ResetSendPasswordScreen = () => {
     </div>
   );
 };
+//     return (
+//         <div className='authScreenMainDiv' style={{ backgroundColor: Colors.WHITE }}>
+//             <div className='authScreenSubDiv'>
+//                 <p className="titleStyle">{t("RESET_PASSWORD")}</p>
+//                 <Formik
+//                     initialValues={{ username: "", password: "" }}
+//                     onSubmit={(values) => {
+//                         dispatch(resetPasswordThunk(values));
+//                     }}
+//                     // validationSchema={loginValidatoinSchema}
+//                     >
+//                     {({
+//                         values,
+//                         errors,
+//                         touched,
+//                         handleChange,
+//                         handleBlur,
+//                         handleSubmit,
+//                     }) => (
+//                         <form onSubmit={handleSubmit} autoComplete="off">
+//                         <CustomInputField
+//                             type="password"
+//                             name="password"
+//                             placeholder={t("NEW_PASSWORD")}
+//                             onChange={handleChange}
+//                             onBlur={handleBlur}
+//                             value={values.email}
+//                         />
+//                         <CustomInputField
+//                             type="password"
+//                             name="confirmPassword"
+//                             placeholder={t("CONFIRM_PASSWORD")}
+//                             onChange={handleChange}
+//                             onBlur={handleBlur}
+//                             value={values.email}
+//                         />
+//                         <p style={{ color: Colors.RED }}>
+//                             {errors.username && touched.username && errors.username}
+//                         </p>
+//                         <CustomButton buttonTitle={t("SEND_CODE")}/>
+//                         </form>
+//                     )}
+//                 </Formik>
+//             </div>
+//         </div>
+//     )
+// }
