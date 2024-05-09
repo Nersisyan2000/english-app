@@ -12,3 +12,4 @@ export * from "./custom-card-item";
 export * from "./custom-pagination";
 export * from "./custom-add-new";
 export * from "./my-custom-table";
+export * from "./custom-search-input";

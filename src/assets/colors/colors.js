@@ -16,4 +16,5 @@ export const Colors = {
   PURPLE_SECOND: "#9647FF",
   ICON_COLOR: "#C3CAD9",
   LIGHT_GREEN: "#C9F2CD",
+  LIGHT_GRAY_WITH_ALFA: "#7D8FB366",
 };

@@ -32,5 +32,8 @@
   "DONT_RECEIVE_CODE": "Didn’t receive code?",
   "RESEND": "Resend",
   "VERIFED_BY_PHONE": "Verifed by Phone",
-  "VERIFED_BY_EMAIL": "Verifed By Email"
+  "VERIFED_BY_EMAIL": "Verifed By Email",
+  "ADD_NEW_WORDS": "Add New Words",
+  "ADD_WORDS_FROM_EXCEL": "Add  Words From Excel",
+  "UPDATE_WORDS_FROM_EXCEL": "Update Words From Excel"
 }

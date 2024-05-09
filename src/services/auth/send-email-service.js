@@ -1,7 +1,7 @@
-import axios from "axios";
+import { api } from "..";
 
 export const sendEmail = (data) => {
-    return axios.post("http://localhost:4000/api/admin/auth/login", {
+    return api.post("api/admin/auth/recovery/email", {
         email: data.email,
     })
 }

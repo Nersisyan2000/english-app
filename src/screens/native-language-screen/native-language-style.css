@@ -25,6 +25,31 @@
     flex-wrap: wrap;
 }
 
+.ant-input{
+    max-width: 420px !important;
+    min-height: 60px;
+    border-radius: 10px;
+}
+
+.upload{
+    cursor: pointer;
+}
+
+.ant-upload-list-item{
+    width: 420px;
+}
+
+.ant-upload-list-item-name{
+    overflow:visible !important;
+}
+
+.ant-upload-list-item-action{
+    align-items: start !important;
+    justify-content: start !important;
+    background: none !important;
+    margin-left: 15px;
+}
+
 @media only screen and (max-width: 1024px) {
     .nativeLanguageScreenMainDiv {
         padding: 60px 25px 30px 25px;

@@ -1,11 +1,12 @@
 import { Routes, Route } from "react-router-dom";
-import {
-  CategoryScreen,
-  HomeScreen,
-  LearningLanguageScreen,
-  LoginScreen,
-  ResetPasswordEmail,
+import { 
+  CategoryScreen, 
+  HomeScreen, 
+  LearningLanguageScreen, 
+  LoginScreen, 
+  ResetPasswordEmail, 
   ResetSendPasswordScreen,
+  WordsScreen,
   EmailVeraficationScreen,
   UserScreen,
   FeedbackScreen,
@@ -17,6 +18,7 @@ import { CustomHeader } from "../components/custom-header/custom-header";
 import { CustomSidebar } from "../components/custom-sidebar/custom-sidebar";
 import { DashboardScreen } from "../screens/dashboard-screen/dashboard-screen";
 import { NativeLanguageScreen } from "../screens/native-language-screen/native-language-screen";
+import { NativeLanguageCretae } from "../screens/native-language-screen/native-language-cretae-form";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -33,6 +35,9 @@ export const MyRoutes = () => {
             path="/emailVerafication"
             element={<EmailVeraficationScreen />}
           />
+          <Route path="/" element={<LoginScreen/>} />
+          <Route path="/resetPassword" element={<ResetSendPasswordScreen />} />
+          <Route path="/sendEmail" element={<ResetSendPasswordScreen />}/>
         </Routes>
       ) : (
         <Routes>
@@ -49,6 +54,10 @@ export const MyRoutes = () => {
                 path="/learning-language"
                 element={<LearningLanguageScreen />}
               />
+              <Route path="/native-language" element={<NativeLanguageScreen />} />
+              <Route path="/native-language-create" element={<NativeLanguageCretae />} />
+              <Route path="/words" element={<WordsScreen />}/>
+              <Route path="/learning-language" element={<LearningLanguageScreen />} />
               <Route path="/category" element={<CategoryScreen />} />
               <Route path="/user" element={<UserScreen />} />
               <Route path="/feedback" element={<FeedbackScreen />} />
