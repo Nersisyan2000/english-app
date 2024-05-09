@@ -7,6 +7,8 @@ import {
   ResetPasswordEmail,
   ResetSendPasswordScreen,
   EmailVeraficationScreen,
+  UserScreen,
+  FeedbackScreen,
 } from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
@@ -48,6 +50,8 @@ export const MyRoutes = () => {
                 element={<LearningLanguageScreen />}
               />
               <Route path="/category" element={<CategoryScreen />} />
+              <Route path="/user" element={<UserScreen />} />
+              <Route path="/feedback" element={<FeedbackScreen />} />
             </Route>
           </Route>
         </Routes>
