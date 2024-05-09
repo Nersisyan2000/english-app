@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import { CustomCardItem, CustomPagination, CustomSelect } from "../../components";
 import { CustomAddNew } from "../../components/custom-add-new/custom-add-new";
 import { countryData } from "../../data/custom-data-table";
 import "./category-screen.css";
 
 export const CategoryScreen = () => {
-
+const navigate  = useNavigate();
 
     return (
         <div className="nativeLanguageScreenMainDiv">
-            <CustomAddNew title="Add New Category" />
+            <CustomAddNew title="Add New Category" onClick={() => {
+                    navigate("/category-create")
+                }}/>
             <p className="category-title">Category</p>
             <div className="select-row">
                 <CustomSelect title={"Learning Language"} />

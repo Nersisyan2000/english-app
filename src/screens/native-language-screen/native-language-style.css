@@ -7,6 +7,14 @@
     background-color: white;
     border-radius: 50px;
 }
+.nativeLanguageCreateScreenMainDiv{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 60px 82px 30px 82px;
+    background-color: white;
+    border-radius: 50px;
+}
 
 .nativeScreenPaginationDiv {
     display: flex;

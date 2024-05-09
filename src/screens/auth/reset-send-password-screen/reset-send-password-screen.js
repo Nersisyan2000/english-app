@@ -64,7 +64,6 @@ export const ResetSendPasswordScreen = () => {
     </div>
   );
 };
-
 //     return (
 //         <div className='authScreenMainDiv' style={{ backgroundColor: Colors.WHITE }}>
 //             <div className='authScreenSubDiv'>

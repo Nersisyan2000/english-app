@@ -10,6 +10,7 @@ export * from "./custom-country-item";
 export * from "./custom-select";
 export * from "./custom-card-item";
 export * from "./custom-pagination";
+export * from "./custom-antd-input"
 export * from "./custom-add-new";
 export * from "./my-custom-table";
 export * from "./custom-search-input";
