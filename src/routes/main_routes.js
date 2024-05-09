@@ -20,6 +20,8 @@ import { DashboardScreen } from "../screens/dashboard-screen/dashboard-screen";
 import { NativeLanguageScreen } from "../screens/native-language-screen/native-language-screen";
 import { NativeLanguageCretae } from "../screens/native-language-screen/native-language-cretae-form";
 import { CategoryCretae } from "../screens/category-screen/category-screen-create-from";
+import { FilesScreen } from "../screens/files-screen/files-screen";
+import { UserCreateScreen } from "../screens/user-screen/user-create-screen";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -47,14 +49,8 @@ export const MyRoutes = () => {
             <Route element={<CustomSidebar />}>
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
-              <Route
-                path="/native-language"
-                element={<NativeLanguageScreen />}
-              />
-              <Route
-                path="/learning-language"
-                element={<LearningLanguageScreen />}
-              />
+              <Route path="/native-language" element={<NativeLanguageScreen />} />
+              <Route path="/learning-language"  element={<LearningLanguageScreen />} />
               <Route path="/native-language" element={<NativeLanguageScreen />} />
               <Route path="/native-language-create" element={<NativeLanguageCretae />} />
               <Route path="/words" element={<WordsScreen />}/>
@@ -63,6 +59,9 @@ export const MyRoutes = () => {
               <Route path="/category-create" element={<CategoryCretae />} />
               <Route path="/user" element={<UserScreen />} />
               <Route path="/feedback" element={<FeedbackScreen />} />
+              <Route path="/files" element={<FilesScreen />} />
+              <Route path="/user-create" element={<UserCreateScreen />}/>
+
             </Route>
           </Route>
         </Routes>
