@@ -1,11 +1,8 @@
 import React from "react";
 import "./custom-button.css";
-import { useTranslation } from "react-i18next";
 import { Colors } from "../../assets/colors/colors";
 
-export const CustomButton = ({ handleSubmit, buttonTitle }) => {
-  const { t } = useTranslation();
-
+export const CustomButton = ({ handleSubmit, buttonTitle, buttonIcon }) => {
   return (
     <div className="customButtonMainDiv">
       <button
@@ -15,6 +12,9 @@ export const CustomButton = ({ handleSubmit, buttonTitle }) => {
         type="submit"
       >
         {buttonTitle}
+        {buttonIcon ? (
+          <img src={buttonIcon} className="custtomButtonIcon" />
+        ) : null}
       </button>
     </div>
   );
