@@ -24,11 +24,13 @@
     color: #7D8FB3  !important; 
     font-size: 13px !important;
 }
+
 .select-row{
     display: flex;
     flex-direction: row;
     margin-bottom: 28px;
 }
+
 .category-title{
     margin:  24px 0 16px 0;
     font-family: Roboto;
