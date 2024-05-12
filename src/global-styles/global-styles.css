@@ -22,7 +22,7 @@
   justify-content: space-between;
   width: 100%;
   border-radius: 50px;
-  padding: 47px  94px 47px 94px;
+  padding: 47px 94px 47px 94px;
 }
 
 .authScreenSubDiv {
@@ -48,4 +48,9 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 28px;
+}
+
+.createScreenRowInputs {
+  width: 420px;
+  justify-content: space-between;
 }

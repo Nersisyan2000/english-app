@@ -2,7 +2,7 @@ import { Colors } from "../../assets/colors"
 import { Form } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
-import { CustomSelect, CutomAntdInput } from "../../components";
+import { CustomSelect, CustomAntdInput } from "../../components";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./user-screen.css"
@@ -52,15 +52,15 @@ export const UserCreateScreen = () =>{
                 }}
             >
                 <div className="category_row_input">
-                    <CutomAntdInput name="first_name" placeholder=" First Name*" />
-                    <CutomAntdInput name="last_name" placeholder="Last Name*" />
+                    <CustomAntdInput name="first_name" placeholder=" First Name*" />
+                    <CustomAntdInput name="last_name" placeholder="Last Name*" />
                 </div>
                 <div className="category_row_input">
-                    <CutomAntdInput name="phone" placeholder="Phone*" />
-                    <CutomAntdInput name="email" placeholder="Email*" />
+                    <CustomAntdInput name="phone" placeholder="Phone*" />
+                    <CustomAntdInput name="email" placeholder="Email*" />
                 </div>
                 <div className="category_row_input">
-                    <CutomAntdInput name="password" placeholder="Password*" />
+                    <CustomAntdInput name="password" placeholder="Password*" />
                     <CustomSelect title={t("SUBSCRIPTION")} />
                 </div>
 

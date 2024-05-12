@@ -11,6 +11,7 @@ import {
   UserScreen,
   FeedbackScreen,
   NotificationScreen,
+  LearningLanguageCreateScreen,
 } from "../screens";
 import { StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
@@ -74,6 +75,7 @@ export const MyRoutes = () => {
               <Route path="/notification" element={<NotificationScreen />} />
               <Route path="/files" element={<FilesScreen />} />
               <Route path="/user-create" element={<UserCreateScreen />} />
+              <Route path="/learning-language-create" element={<LearningLanguageCreateScreen />}/>
             </Route>
           </Route>
         </Routes>

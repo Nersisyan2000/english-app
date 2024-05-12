@@ -1,7 +1,7 @@
 import { Button, Form, Input,  Upload,} from 'antd';
 
 
-export const CutomAntdInput = ({name,placeholder}) => {
+export const CustomAntdInput = ({name,placeholder}) => {
     return (
         <Form.Item
             name={name}
