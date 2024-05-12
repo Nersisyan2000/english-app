@@ -6,4 +6,6 @@ export * from "./category-screen";
 export * from "./learning-language-screen";
 export * from "./user-screen";
 export * from "./feedback-screen";
-export * from './words-screen';
+export * from "./words-screen";
+export * from "./feedback-screen";
+export * from "./notification-screen";
