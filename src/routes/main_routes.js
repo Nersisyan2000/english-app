@@ -74,13 +74,9 @@ export const MyRoutes = () => {
               <Route path="/feedback" element={<FeedbackScreen />} />
               <Route path="/notification" element={<NotificationScreen />} />
               <Route path="/files" element={<FilesScreen />} />
-<<<<<<< HEAD
               <Route path="/user-create" element={<UserCreateScreen />}/>
               <Route path="/native-update" element={<UpdateNativeLanguage />}/>
 
-=======
-              <Route path="/user-create" element={<UserCreateScreen />} />
->>>>>>> d9b6ebe333e96d9fcb875aa520d1cf5c238a8abe
             </Route>
           </Route>
         </Routes>
