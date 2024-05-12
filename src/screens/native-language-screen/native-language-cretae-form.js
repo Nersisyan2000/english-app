@@ -19,18 +19,19 @@ export const NativeLanguageCretae = () => {
   const formData = new FormData();
   const nativeCreateBool = useSelector(getNativeCreateBool);
   const [fileList, setFileList] = useState([]);
-  const [show, setShow] = useState();
-  const [showUpload, setShowUpload] = useState();
+  const [categoryShow, setCategoryShow] = useState();
+  const [showCategoryUpload, setCatgeoryShowUpload] = useState();
 
   const onFinish = (values) => {
     console.log(values, "values");
     if (values.image.file != "") {
       formData.append("nameEng", values.nameEng);
       formData.append("name", values.name);
-      formData.append("image", show);
-      setShow("");
+      formData.append("image", categoryShow);
+      console.log(categoryShow, "logg");
       dispatch(nativeLanguageCreateThunk(formData));
       form.resetFields();
+      setCategoryShow("");
     } else {
       console.log(values, "values");
     }
@@ -38,23 +39,17 @@ export const NativeLanguageCretae = () => {
 
   useEffect(() => {
     if (nativeCreateBool === true) {
-      navigate("/native-language");
     }
     dispatch(deleteNativeCreateBool());
   }, [nativeCreateBool]);
 
   const handleChange = (info) => {
     console.log(info, "info");
-    setShow(info.file);
-    setShowUpload(info.fileList[0]);
+    setCategoryShow(info.file);
+    setCatgeoryShowUpload(info.fileList[0]);
     if (!info.fileList[0]) {
       info.file = "";
     }
-    // formData.append('image', info.fileList[0]);
-  };
-
-  const beforeUpload = () => {
-    return false;
   };
 
   const props = {
@@ -79,8 +74,8 @@ export const NativeLanguageCretae = () => {
           maxWidth: 600,
         }}
       >
-        <CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
-        <CustomAntdInput name="name" placeholder="Native Name*" />
+        <CutomAntdInput name="nameEng" placeholder=" Language English Name*" />
+        <CutomAntdInput name="name" placeholder="Native Name*" />
 
         <Form.Item
           name="image"
@@ -98,7 +93,9 @@ export const NativeLanguageCretae = () => {
             listType="picture"
             className="upload-list-inline"
           >
-            {showUpload ? null : <img src={uploadImage} className="upload" />}
+            {categoryShow && showCategoryUpload ? null : (
+              <img src={uploadIcon} className="upload" />
+            )}
           </Upload>
         </Form.Item>
 

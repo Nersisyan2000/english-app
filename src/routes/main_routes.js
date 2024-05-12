@@ -24,6 +24,7 @@ import { NativeLanguageCretae } from "../screens/native-language-screen/native-l
 import { CategoryCretae } from "../screens/category-screen/category-screen-create-from";
 import { FilesScreen } from "../screens/files-screen/files-screen";
 import { UserCreateScreen } from "../screens/user-screen/user-create-screen";
+import { UpdateNativeLanguage } from "../screens/native-language-screen/update-native-language";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -75,7 +76,11 @@ export const MyRoutes = () => {
               <Route path="/notification" element={<NotificationScreen />} />
               <Route path="/files" element={<FilesScreen />} />
               <Route path="/user-create" element={<UserCreateScreen />} />
-              <Route path="/learning-language-create" element={<LearningLanguageCreateScreen />}/>
+              <Route
+                path="/learning-language-create"
+                element={<LearningLanguageCreateScreen />}
+              />
+              <Route path="/native-update" element={<UpdateNativeLanguage />} />
             </Route>
           </Route>
         </Routes>

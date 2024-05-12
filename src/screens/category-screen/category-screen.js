@@ -7,6 +7,10 @@ import "./category-screen.css";
 export const CategoryScreen = () => {
 const navigate  = useNavigate();
 
+const navigateUpdate = () => {
+    navigate("/category-update")
+}
+
     return (
         <div className="nativeLanguageScreenMainDiv">
             <CustomAddNew title="Add New Category" onClick={() => {
@@ -26,20 +30,16 @@ const navigate  = useNavigate();
                 {
                     countryData.map((countryItem) => {
                         return (
-                            <CustomCardItem icon={countryItem.icon} title={countryItem.title} />
+                            <CustomCardItem icon={countryItem.icon} title={countryItem.title} onClick={navigateUpdate}/>
                         )
                     })
                 }
                 
-
             </div>
             <div className="category-pagination">
                     <CustomPagination />
                 </div>
            </div>
-
-
-
         </div>
     )
 }

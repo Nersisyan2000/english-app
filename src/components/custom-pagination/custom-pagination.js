@@ -3,7 +3,8 @@ import { Pagination } from 'antd';
 import "./custom-pagination.css"
 
 
-export const CustomPagination = () => {
+export const CustomPagination = (length) => {
+    console.log(length.length,"log length");
 
     const onShowSizeChange = (current, pageSize) => {
     };
@@ -12,8 +13,8 @@ export const CustomPagination = () => {
             <Pagination
                 showSizeChanger
                 onShowSizeChange={onShowSizeChange}
-                defaultCurrent={3}
-                total={150}
+                defaultCurrent={1}
+                total={length?.length}
             />
         </div>
     )
