@@ -10,8 +10,8 @@ export const CustomCountryItem = ({ icon, title }) => {
     return (
         <>
            <div className='customCountryItem' style={{backgroundColor: Colors.BACKGROUND_COLOR}}>
-                <p className='customCountryItemTitle' style={{color: Colors.LIGHT_GRAY}}>{title}</p>
-                <img src={image.trim()} />
+                <p className='customCountryItemTitle' style={{color: Colors.LIGHT_GRAY}}>{title.length  < 15 ? title : title.slice(0,15)}</p>
+                <img src={image} />
             </div>
         </>
     )

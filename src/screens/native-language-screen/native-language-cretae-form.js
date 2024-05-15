@@ -51,6 +51,9 @@ export const NativeLanguageCretae = () => {
       info.file = "";
     }
   };
+  const beforeUpload = () => {
+    return false;
+};
 
   const props = {
     accept: ".png",
@@ -74,8 +77,8 @@ export const NativeLanguageCretae = () => {
           maxWidth: 600,
         }}
       >
-        <CutomAntdInput name="nameEng" placeholder=" Language English Name*" />
-        <CutomAntdInput name="name" placeholder="Native Name*" />
+        <CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
+        <CustomAntdInput name="name" placeholder="Native Name*" />
 
         <Form.Item
           name="image"
@@ -94,7 +97,7 @@ export const NativeLanguageCretae = () => {
             className="upload-list-inline"
           >
             {categoryShow && showCategoryUpload ? null : (
-              <img src={uploadIcon} className="upload" />
+              <img src={uploadImage} className="upload" />
             )}
           </Upload>
         </Form.Item>

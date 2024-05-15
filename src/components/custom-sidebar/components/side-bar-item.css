@@ -18,15 +18,7 @@
   margin-left: 23px;
 }
 
-.countStyle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  margin-left: 65px;
-}
+
 
 .css-3dcfwk-MuiBarElement-root,
 .css-1qdzy9k-MuiBarElement-root,
@@ -43,10 +35,6 @@
   .sideBarItemTitle {
    word-break: break-all;
   }
-  
-.countStyle {
-  margin-left: 40px;
-}
 
 }
 

@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Form, Upload, } from 'antd';
 import { useDispatch, useSelector } from "react-redux";
 import { deleteNativeCreateBool, getNativeCreateBool, nativeLanguageCreateThunk } from "../../store/slices/native-language/native-language-create";
-import uploadIcon from "../../assets/images/Group 1000014822.png";
+import uploadIcon from  "../../assets/images/uploadImg.png";
 import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
 import { Colors } from "../../assets/colors";
 import { useNavigate } from "react-router-dom";
-import { CutomAntdInput } from "../../components";
+import { CustomAntdInput } from "../../components";
 import { getNativeGetResponse } from "../../store/slices/native-language/native-language-get";
 
 export const UpdateNativeLanguage = () => {
@@ -91,10 +91,10 @@ export const UpdateNativeLanguage = () => {
                 }}
             >
                 <p>Language english name</p>
-                <CutomAntdInput name="nameEng" placeholder=" Language English Name*" />
+                <CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
                 <p>Native Name</p>
 
-                <CutomAntdInput name="name" placeholder="Native Name*" />
+                <CustomAntdInput name="name" placeholder="Native Name*" />
 
                 <p>Language Icon</p>
 

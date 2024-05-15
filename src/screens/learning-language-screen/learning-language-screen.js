@@ -28,7 +28,11 @@ export const LearningLanguageScreen = () => {
         </div>
         <div className="learningLanguageCardItems">
           {arr.map(() => {
-            return <LearningLanguageItemCard title={"English"} count={35} />;
+            return (
+              <div className="pointer">
+                 <LearningLanguageItemCard title={"English"} count={35} />
+              </div>
+            );
           })}
         </div>
       </div>

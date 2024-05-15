@@ -17,6 +17,8 @@
 }
 .pointer{
     cursor: pointer;
+    width: 100%;
+    max-width: 25%;
 }
 
 .nativeScreenPaginationDiv {

@@ -23,7 +23,7 @@ export const NativeLanguageScreen = () => {
     }
     const data = {
 
-        skip: 1,
+        skip: 0,
         limit: 10
 
     }

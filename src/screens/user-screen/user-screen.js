@@ -4,13 +4,15 @@ import "../../global-styles/index";
 import { CustomAddNew, CustomSelect, MyCustomTable } from "../../components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import Table from 'react-bootstrap/Table';
+
 
 export const UserScreen = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <div
-      className="authScreenMainDiv"
+      className="nativeLanguageScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE }}
     >
       <div>
@@ -23,7 +25,8 @@ export const UserScreen = () => {
           <CustomSelect title={t("VERIFED_BY_PHONE")} />
           <CustomSelect title={t("VERIFED_BY_EMAIL")} />
         </div>
-        <MyCustomTable />
+       
+        {/* <MyCustomTable /> */}
       </div>
     </div>
   );

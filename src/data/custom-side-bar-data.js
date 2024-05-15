@@ -22,7 +22,6 @@ export const customSideBarData = [
     icon: nativeLanguageIcon,
     title: "NATIVE_LANGUAGE",
     color: Colors.PURPLE,
-    count: 9,
     path: "/native-language",
   },
   {

@@ -5,9 +5,9 @@
     padding: 11px 15px 11px 15px;
     border: 1px solid #7D8FB326;
     border-radius: 10px;
-    width: 100%;
-    max-width: 206px;
     margin:0 8px 8px 0 ;
+    /* width: 100%; */
+    /* max-width: 25%; */
 }
 
 .customCardItemTitle{

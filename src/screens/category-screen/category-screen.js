@@ -30,7 +30,9 @@ const navigateUpdate = () => {
                 {
                     countryData.map((countryItem) => {
                         return (
+                            <div  className='pointer'>
                             <CustomCardItem icon={countryItem.icon} title={countryItem.title} onClick={navigateUpdate}/>
+                        </div>
                         )
                     })
                 }
