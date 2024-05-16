@@ -23,12 +23,10 @@ export const UserCreateScreen = () =>{
 
 
     const onFinish = (values) => {
-        console.log(values, "values")
         if (values.category_image.file != "") {
             formData.append('name', values.category_name);
             formData.append('localization', values.category_string);
             formData.append('image', categoryShow);
-            console.log(categoryShow, "logg")
             // dispatch(categoryCreateThunk(formData));
             form.resetFields();
             setCategoryShow("")

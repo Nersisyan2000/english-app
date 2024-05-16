@@ -11,6 +11,7 @@ import {
   userGetByIdSlice,
   categoryDeleteSlice,
   categoryGetSlice,
+  nativeLanguageDeleteSlice,
 } from "./slices";
 import { categoryUpdateSlice } from "./slices/category/update-category";
 
@@ -19,14 +20,15 @@ export const store = configureStore({
     loginSlice: loginSlice.reducer,
     createNativeSlice: nativeLanguageCreateSlice.reducer,
     getNativeSlice: nativeLanguageGetSlice.reducer,
+    nativeLanguageDeleteSlice: nativeLanguageDeleteSlice.reducer,
     categoryCreateSlice: categoryCreateSlice.reducer,
     userCreateSlice: userCreateSlice.reducer,
     userDeleteSlice: userDeleteSlice.reducer,
     userUpdateSlice: userUpdateSlice.reducer,
     userGetAllSlice: userGetAllSlice.reducer,
     userGetByIdSlice: userGetByIdSlice.reducer,
-    categoryDeleteSlice:categoryDeleteSlice.reducer,
-    categoryUpdateSlice:categoryUpdateSlice.reducer,
-    categoryGetSlice:categoryGetSlice.reducer
+    categoryDeleteSlice: categoryDeleteSlice.reducer,
+    categoryUpdateSlice: categoryUpdateSlice.reducer,
+    categoryGetSlice: categoryGetSlice.reducer,
   },
 });

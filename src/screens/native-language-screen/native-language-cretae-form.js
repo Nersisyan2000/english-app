@@ -23,12 +23,10 @@ export const NativeLanguageCretae = () => {
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
 
   const onFinish = (values) => {
-    console.log(values, "values");
     if (values.image.file != "") {
       formData.append("nameEng", values.nameEng);
       formData.append("name", values.name);
       formData.append("image", categoryShow);
-      console.log(categoryShow, "logg");
       dispatch(nativeLanguageCreateThunk(formData));
       form.resetFields();
       setCategoryShow("");
@@ -44,7 +42,6 @@ export const NativeLanguageCretae = () => {
   }, [nativeCreateBool]);
 
   const handleChange = (info) => {
-    console.log(info, "info");
     setCategoryShow(info.file);
     setCatgeoryShowUpload(info.fileList[0]);
     if (!info.fileList[0]) {
@@ -58,7 +55,6 @@ export const NativeLanguageCretae = () => {
   const props = {
     accept: ".png",
     onRemove: (file) => {
-      console.log(file, "logg");
       const index = fileList.indexOf(file);
       const newFileList = fileList.slice();
       newFileList.splice(index, 1);

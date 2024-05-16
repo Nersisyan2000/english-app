@@ -32,7 +32,7 @@ export const MyRoutes = () => {
 
   return (
     <>
-      {token && loginData?.token ? (
+      {!token && !loginData?.token ? (
         <Routes>
           <Route path="/" element={<LoginScreen />} />
           <Route path="/sendEmail" element={<ResetPasswordEmail />} />
