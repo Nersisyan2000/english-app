@@ -21,6 +21,7 @@ import {
   nativeLanguageDeleteThunk,
 } from "../../store/slices/native-language/native-language-delete";
 import remove_icon from "../../assets/images/remove_icon.png";
+import { nativeLanguageUpdateThunk } from "../../store/slices";
 
 export const UpdateNativeLanguage = () => {
   const [form] = Form.useForm();
@@ -34,15 +35,18 @@ export const UpdateNativeLanguage = () => {
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
   const nativeLanguageData = useSelector(getNativeGetResponse);
   const nativeData = nativeLanguageData?.data?.list?.[0];
-  console.log("hello world");
+  console.log(nativeData);
 
-  console.log(nativeData, "log native");
   const onFinish = (values) => {
     if (values.image.file != "") {
       formData.append("nameEng", values.nameEng);
       formData.append("name", values.name);
-      formData.append("image", categoryShow);
-      dispatch(nativeLanguageCreateThunk(formData));
+      categoryShow
+        ? formData.append("image", categoryShow)
+        : formData.append("image", nativeData?.imageFile);
+      formData.append("id", nativeData.id);
+      formData.append("active", nativeData?.active);
+      dispatch(nativeLanguageUpdateThunk(formData));
       form.resetFields();
       setCategoryShow("");
     } else {

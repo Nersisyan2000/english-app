@@ -14,6 +14,7 @@ export const NativeLanguageScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const nativeLanguageData = useSelector(getNativeGetResponse);
+  console.log(nativeLanguageData, "log data");
   const token = localStorage.getItem("token");
   const nativeData = nativeLanguageData?.data?.list;
 
@@ -51,7 +52,7 @@ export const NativeLanguageScreen = () => {
         </div>
       </div>
       <div className="nativeScreenPaginationDiv">
-        <CustomPagination length={nativeData?.length} />
+        <CustomPagination length={nativeLanguageData?.data?.total} />
       </div>
     </div>
   );

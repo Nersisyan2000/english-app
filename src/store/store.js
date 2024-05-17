@@ -12,6 +12,7 @@ import {
   categoryDeleteSlice,
   categoryGetSlice,
   nativeLanguageDeleteSlice,
+  nativeLanguageUpdateSlice,
 } from "./slices";
 import { categoryUpdateSlice } from "./slices/category/update-category";
 
@@ -21,6 +22,7 @@ export const store = configureStore({
     createNativeSlice: nativeLanguageCreateSlice.reducer,
     getNativeSlice: nativeLanguageGetSlice.reducer,
     nativeLanguageDeleteSlice: nativeLanguageDeleteSlice.reducer,
+    nativeLanguageUpdateSlice:nativeLanguageUpdateSlice.reducer,
     categoryCreateSlice: categoryCreateSlice.reducer,
     userCreateSlice: userCreateSlice.reducer,
     userDeleteSlice: userDeleteSlice.reducer,
