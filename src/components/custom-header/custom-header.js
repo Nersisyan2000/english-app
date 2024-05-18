@@ -7,11 +7,10 @@ import statisticIcon from "../../assets/images/statisticsIcon.svg";
 import logOutIcon from "../../assets/images/logout-svgrepo-com.svg";
 import { deleteReduxToken } from "../../store/slices/auth/login-slice";
 import { useMediaQuery } from "react-responsive";
-import { Colors } from "../../assets/colors/colors";
-import "./custom-header.css";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CustomDrawer } from "../custom-drawer/custom-drawer";
+import "./custom-header.css";
 
 export const CustomHeader = () => {
   const navigate = useNavigate();
@@ -26,13 +25,13 @@ export const CustomHeader = () => {
   };
 
   return (
-    <div className="customHeaderApp">
+    <div className="customHeaderMainDiv">
       <header className="appHeader">
         <div className="headerFirstPart">
           {isSmallScreen ? (
             <img
               src={headerLeftIcon}
-              className="headerIconFirst"
+              className="headerLeftIcon"
               alt=""
               onClick={() => setOpen(true)}
             />
@@ -41,10 +40,14 @@ export const CustomHeader = () => {
           <p className="headertitle">English app</p>
         </div>
         <div className="headerSecondPart">
-          <img src={bellIcon} className="headerIcon bellIcon" alt="" />
-          <img src={messageIcon} className="headerIcon" alt="" />
-          <img src={membersIcon} className="headerIcon" alt="" />
-          <img src={statisticIcon} className="headerIcon" alt="" />
+          <img src={bellIcon} className="headerIcon bellIcon" alt="bell icon" />
+          <img src={messageIcon} className="headerIcon" alt="message icon" />
+          <img src={membersIcon} className="headerIcon" alt="member icon" />
+          <img
+            src={statisticIcon}
+            className="headerIcon"
+            alt="statistics icon"
+          />
           <img
             alt=""
             src={logOutIcon}

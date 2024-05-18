@@ -4,12 +4,14 @@
   align-items: center;
   margin-right: 24px;
 }
+
 .customAddSubDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
   cursor: pointer;
 }
+
 .customAddNewPlusIcon {
   margin-right: 14px;
 }

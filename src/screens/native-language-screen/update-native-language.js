@@ -7,13 +7,10 @@ import {
   nativeLanguageCreateThunk,
 } from "../../store/slices/native-language/native-language-create";
 import uploadIcon from "../../assets/images/uploadImg.png";
-import {
-  CustomAntdButton,
-  CustomAntdButtonDelete,
-} from "../../components/custom-antd-button/custom-antd-button";
+import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
 import { Colors } from "../../assets/colors";
 import { useNavigate } from "react-router-dom";
-import { CustomAntdInput } from "../../components";
+import { CustomAntdButtonDelete, CustomAntdInput } from "../../components";
 import { getNativeGetResponse } from "../../store/slices/native-language/native-language-get";
 import {
   deleteNativeDeleteBool,

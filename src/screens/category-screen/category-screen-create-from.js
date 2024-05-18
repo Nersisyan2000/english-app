@@ -6,6 +6,7 @@ import { CustomAntdButton } from "../../components";
 import { Colors } from "../../assets/colors";
 import { CustomAntdInput } from "../../components";
 import { categoryCreateThunk } from "../../store/slices/category/category-create";
+import { useTranslation } from "react-i18next";
 
 export const CategoryCretae = () => {
   const [form] = Form.useForm();
@@ -14,6 +15,7 @@ export const CategoryCretae = () => {
   const [categoryFileList, setCategoryFileList] = useState([]);
   const [categoryShow, setCategoryShow] = useState();
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
+  const { t } = useTranslation();
 
   const onFinish = (values) => {
     if (values.category_image.file != "") {
@@ -92,7 +94,7 @@ export const CategoryCretae = () => {
         </Form.Item>
 
         <Form.Item>
-          <CustomAntdButton title="Add" background={Colors.PURPLE} />
+          <CustomAntdButton title={t("ADD")} background={Colors.PURPLE} />
         </Form.Item>
       </Form>
     </div>

@@ -22,7 +22,7 @@ export const store = configureStore({
     createNativeSlice: nativeLanguageCreateSlice.reducer,
     getNativeSlice: nativeLanguageGetSlice.reducer,
     nativeLanguageDeleteSlice: nativeLanguageDeleteSlice.reducer,
-    nativeLanguageUpdateSlice:nativeLanguageUpdateSlice.reducer,
+    nativeLanguageUpdateSlice: nativeLanguageUpdateSlice.reducer,
     categoryCreateSlice: categoryCreateSlice.reducer,
     userCreateSlice: userCreateSlice.reducer,
     userDeleteSlice: userDeleteSlice.reducer,

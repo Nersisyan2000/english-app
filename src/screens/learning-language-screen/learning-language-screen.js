@@ -30,7 +30,7 @@ export const LearningLanguageScreen = () => {
           {arr.map(() => {
             return (
               <div className="pointer">
-                 <LearningLanguageItemCard title={"English"} count={35} />
+                <LearningLanguageItemCard title={"English"} count={35} />
               </div>
             );
           })}

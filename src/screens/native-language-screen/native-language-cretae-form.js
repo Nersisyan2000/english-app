@@ -50,7 +50,7 @@ export const NativeLanguageCretae = () => {
   };
   const beforeUpload = () => {
     return false;
-};
+  };
 
   const props = {
     accept: ".png",

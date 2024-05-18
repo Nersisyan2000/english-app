@@ -1,18 +1,22 @@
 import React from "react";
 import { Pagination } from "antd";
-import "./custom-pagination.css";
 import { useDispatch } from "react-redux";
 import { nativeLanguageGetThunk } from "../../store/slices/native-language/native-language-get";
+import "./custom-pagination.css";
 
 export const CustomPagination = (length) => {
   const onShowSizeChange = (current, pageSize) => {};
   const dispatch = useDispatch();
 
-  const onChange = (current, pageSize) => {
+  const onChange = (current) => {
+    // pageSize
+    const skip = 1 ? current - 1 : current + 10;
+
     const data = {
-      skip: current == 1 ? current - 1 : current + 10,
+      skip: skip,
       limit: 12,
     };
+
     dispatch(nativeLanguageGetThunk(data));
   };
 

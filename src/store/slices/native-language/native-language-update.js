@@ -12,7 +12,6 @@ const initialState = {
 export const nativeLanguageUpdateThunk = createAsyncThunk(
   "nativeUpdate",
   async (formData, { rejectWithValue }) => {
-    
     try {
       const response = await nativeLanguageUpdateService(formData);
       return response.data;
@@ -34,21 +33,25 @@ export const nativeLanguageUpdateSlice = createSlice({
     builder.addCase(nativeLanguageUpdateThunk.pending, (state) => {
       state.nativeUpdateloading = true;
     });
-    builder.addCase(nativeLanguageUpdateThunk.fulfilled, (state, { payload }) => {
-      state.nativeUpdateloading = false;
-      state.nativeUpdateResponse = payload;
-      state.nativeCreateBool = true;
-    });
-    builder.addCase(nativeLanguageUpdateThunk.rejected, (state, { payload }) => {
-      state.nativeUpdateloading = false;
-      state.nativeUpdateErrors = payload;
-    });
+    builder.addCase(
+      nativeLanguageUpdateThunk.fulfilled,
+      (state, { payload }) => {
+        state.nativeUpdateloading = false;
+        state.nativeUpdateResponse = payload;
+        state.nativeCreateBool = true;
+      }
+    );
+    builder.addCase(
+      nativeLanguageUpdateThunk.rejected,
+      (state, { payload }) => {
+        state.nativeUpdateloading = false;
+        state.nativeUpdateErrors = payload;
+      }
+    );
   },
 });
 
-
 export const { deleteNativeUpdateBool } = nativeLanguageUpdateSlice.actions;
-
 
 export const getNativeUpdateLoading = (state) => {
   return state.nativeLanguageUpdateSlice.nativeUpdateloading;

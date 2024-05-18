@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./custom-country-item-style.css";
 import { Colors } from "../../assets/colors/colors";
 import britishIcon from "../../assets/images/britishCountryIcon.svg.svg";

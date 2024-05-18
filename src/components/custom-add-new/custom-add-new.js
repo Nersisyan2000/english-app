@@ -1,7 +1,7 @@
 import React from "react";
 import plusIcon from "../../assets/images/plusIcon.svg";
-import "./custom-add-new-style.css";
 import { Colors } from "../../assets/colors/colors";
+import "./custom-add-new-style.css";
 
 export const CustomAddNew = ({ title, onClick }) => {
   return (
