@@ -32,7 +32,12 @@ export const UpdateNativeLanguage = () => {
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
   const nativeLanguageData = useSelector(getNativeGetResponse);
   const nativeData = nativeLanguageData?.data?.list?.[0];
-  console.log(nativeData);
+  console.log(
+    nativeLanguageData?.data?.list?.[0].imageFile.path,
+    "native data"
+  );
+  const baseUrl = process.env.REACT_APP_BASE_URL;
+  console.log(`${baseUrl}${nativeData?.imageFile?.path}`, "baseUrl");
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -137,7 +142,7 @@ export const UpdateNativeLanguage = () => {
               </div>
               <div className="imgae_name">
                 <p>{nativeData?.imageFile?.description}</p>
-                <img src={nativeData?.imageFile?.path} />
+                <img src={`${baseUrl}${nativeData?.imageFile?.path}`} />
               </div>
             </div>
           ) : (

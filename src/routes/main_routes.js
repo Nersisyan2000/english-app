@@ -19,6 +19,7 @@ import {
   FilesScreen,
   UserCreateScreen,
   UpdateNativeLanguage,
+  LearningLanguageUpdate,
 } from "../screens";
 import { CustomHeader, CustomSidebar, StatisticsScreen } from "../components";
 import { getLoginData } from "../store/slices/auth/login-slice";
@@ -79,6 +80,10 @@ export const MyRoutes = () => {
                 element={<LearningLanguageCreateScreen />}
               />
               <Route path="/native-update" element={<UpdateNativeLanguage />} />
+              <Route
+                path="/learning-update"
+                element={<LearningLanguageUpdate />}
+              />
             </Route>
           </Route>
         </Routes>

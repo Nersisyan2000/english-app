@@ -15,6 +15,7 @@ import {
   nativeLanguageUpdateSlice,
 } from "./slices";
 import { categoryUpdateSlice } from "./slices/category/update-category";
+import { learningLanguagesSlice } from "./slices/lern-language/learn-languages-slice";
 
 export const store = configureStore({
   reducer: {
@@ -32,5 +33,6 @@ export const store = configureStore({
     categoryDeleteSlice: categoryDeleteSlice.reducer,
     categoryUpdateSlice: categoryUpdateSlice.reducer,
     categoryGetSlice: categoryGetSlice.reducer,
+    learningLanguagesSlice: learningLanguagesSlice.reducer,
   },
 });

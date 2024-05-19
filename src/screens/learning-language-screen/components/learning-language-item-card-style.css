@@ -51,6 +51,26 @@
   box-shadow: none !important;
 }
 
+@media screen and (max-width: 1440px) {
+  .learningLanguageCardTitle {
+    font-size: 18px;
+  }
+  .learningLanguageCardFirstLine {
+    flex-direction: column;
+  }
+  .css-12g71p8 {
+    justify-content: center;
+  }
+  .css-12g71p8 img {
+    width: 25px;
+    height: 25px;
+  }
+  .css-1ioce3q {
+    width: 20px !important;
+    height: 20px !important;
+  }
+}
+
 @media screen and (max-width: 1024px) {
   .learningLanguageCard {
     margin: 10px;
