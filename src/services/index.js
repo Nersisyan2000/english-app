@@ -1,7 +1,9 @@
 import axios from "axios";
+import { Navigate, useNavigate } from 'react-router-dom';
+import { LogOut } from "../helper/logout";
+
 
 let store;
-
 export const injectStore = (_store) => {
   store = _store;
 };
@@ -11,6 +13,7 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
+  console.log(config,"config")
   //   const Lang = localStorage.getItem("i18n")?.toLowerCase();
   const Token = localStorage.getItem("token");
 
@@ -29,3 +32,30 @@ api.interceptors.request.use(async (config) => {
   delete config.headers.non_auth;
   return config;
 });
+
+
+// api.interceptors.response.use(response => {
+//   return response;
+// }, error => {
+//  if (error.response.status === 401) {
+//   LogOut()
+
+//   //place your reentry code
+//   console.log("error")
+//  }
+//  return error;
+// });
+
+api.interceptors.response.use((response) => {
+
+  return response
+}, error => {
+  if(error.response.status === 401){
+    // console.log("fffffff")
+    // localStorage.clear();
+    // window.location.reload()
+    return Promise.reject(error);
+    
+  }
+})
+

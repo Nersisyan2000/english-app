@@ -9,7 +9,6 @@ export const CustomPagination = (length) => {
   const dispatch = useDispatch();
 
   const onChange = (current) => {
-    // pageSize
     const skip = 1 ? current - 1 : current + 10;
 
     const data = {

@@ -9,15 +9,19 @@ import {
   nativeLanguageGetThunk,
 } from "../../store/slices/native-language/native-language-get";
 import { useDispatch, useSelector } from "react-redux";
+import { nativeLanguageGetIdThunk } from "../../store/slices/native-language/get-id-native-language";
 
 export const NativeLanguageScreen = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const nativeLanguageData = useSelector(getNativeGetResponse);
+  console.log(nativeLanguageData,"log data")
   const token = localStorage.getItem("token");
   const nativeData = nativeLanguageData?.data?.list;
 
-  const navigateNativeUpdate = () => {
+  const navigateNativeUpdate = (countryItem) => {
+    localStorage.setItem("nativeId",countryItem?.id)
+    dispatch(nativeLanguageGetIdThunk(countryItem?.id))
     navigate("/native-update");
   };
   const data = {
@@ -40,7 +44,9 @@ export const NativeLanguageScreen = () => {
         <div className="nativeLanguageCountryItems">
           {nativeData?.map((countryItem) => {
             return (
-              <div onClick={navigateNativeUpdate} className="pointer">
+              <div onClick={()=>{
+                navigateNativeUpdate(countryItem)
+              }} className="pointer">
                 <CustomCountryItem
                   icon={countryItem.imageFile.path}
                   title={countryItem.name}

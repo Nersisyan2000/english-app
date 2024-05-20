@@ -13,6 +13,8 @@ export const nativeLanguageGetThunk = createAsyncThunk(
   async (data, { rejectWithValue }) => {
     try {
       const response = await nativeLanguageGetService(data);
+      console.log(response,"logggg")
+      
       return response.data;
     } catch (error) {
       return rejectWithValue(error.message);
