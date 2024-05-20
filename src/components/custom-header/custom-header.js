@@ -11,7 +11,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { CustomDrawer } from "../custom-drawer/custom-drawer";
 import "./custom-header.css";
-import { LogOut } from "../../helper/logout";
 
 export const CustomHeader = () => {
   const navigate = useNavigate();
@@ -53,7 +52,7 @@ export const CustomHeader = () => {
             alt=""
             src={logOutIcon}
             className="headerIcon logOutIcon"
-            onClick={LogOut}
+            onClick={logOut}
           />
         </div>
       </header>
