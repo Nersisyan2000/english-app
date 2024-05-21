@@ -22,16 +22,16 @@ import {
   LearningLanguageUpdate,
 } from "../screens";
 import { CustomHeader, CustomSidebar, StatisticsScreen } from "../components";
-import { getLoginData } from "../store/slices/auth/login-slice";
+import { getToken } from "../store/slices/auth/login-slice";
 import { useSelector } from "react-redux";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
-  const loginData = useSelector(getLoginData);
+  const reduxToken = useSelector(getToken);
 
   return (
     <>
-      {!token && !loginData?.token ? (
+      {!token && !reduxToken ? (
         <Routes>
           <Route path="/" element={<LoginScreen />} />
           <Route path="/sendEmail" element={<ResetPasswordEmail />} />

@@ -17,7 +17,12 @@ import {
   nativeLanguageDeleteThunk,
 } from "../../store/slices/native-language/native-language-delete";
 import remove_icon from "../../assets/images/remove_icon.png";
-import { deleteNativeUpdateBool, getNativeUpdateBool, getNativeUpdateLoading, nativeLanguageUpdateThunk } from "../../store/slices";
+import {
+  deleteNativeUpdateBool,
+  getNativeUpdateBool,
+  getNativeUpdateLoading,
+  nativeLanguageUpdateThunk,
+} from "../../store/slices";
 import {
   getNativeGetIdResponse,
   nativeLanguageGetIdThunk,
@@ -37,11 +42,8 @@ export const UpdateNativeLanguage = () => {
   const nativeLanguageData = useSelector(getNativeGetIdResponse)?.data;
   const nativeUpdateLoading = useSelector(getNativeUpdateLoading);
   const nativeDeleteLoading = useSelector(getNativeDeleteloading);
-  const nativeUpdateBool = useSelector(getNativeUpdateBool)
-  console.log(nativeUpdateBool, "log bool")
-
+  const nativeUpdateBool = useSelector(getNativeUpdateBool);
   const baseUrl = process.env.REACT_APP_BASE_URL;
-  // console.log(`${baseUrl}${nativeData?.imageFile?.path}`, "baseUrl");
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -61,12 +63,6 @@ export const UpdateNativeLanguage = () => {
   useEffect(() => {
     dispatch(nativeLanguageGetIdThunk(nativeId));
   }, []);
-
-  // useEffect(() => {
-  //   if (nativeCreateBool === true) {
-  //   }
-  //   dispatch(deleteNativeCreateBool());
-  // }, [nativeCreateBool]);
 
   const handleChange = (info) => {
     setCategoryShow(info.file);
@@ -89,7 +85,6 @@ export const UpdateNativeLanguage = () => {
     },
   };
 
-
   useEffect(() => {
     form.setFieldsValue({
       nameEng: nativeLanguageData?.nameEng,
@@ -103,7 +98,7 @@ export const UpdateNativeLanguage = () => {
       navigate("/native-language");
     }
     dispatch(deleteNativeDeleteBool());
-    dispatch(deleteNativeUpdateBool())
+    dispatch(deleteNativeUpdateBool());
   }, [deleteBool, nativeUpdateBool]);
 
   return (
@@ -165,7 +160,11 @@ export const UpdateNativeLanguage = () => {
         </Form.Item>
 
         <Form.Item>
-          <CustomAntdButton title="Update" background={Colors.PURPLE} loading={nativeUpdateLoading} />
+          <CustomAntdButton
+            title="Update"
+            background={Colors.PURPLE}
+            loading={nativeUpdateLoading}
+          />
           <div className="deleteButton">
             <CustomAntdButtonDelete
               loading={nativeDeleteLoading}

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { Navigate } from "react-router-dom";
-import { LogOut } from "../helper/logout";
 
 import { redirect } from "react-router-dom";
 
