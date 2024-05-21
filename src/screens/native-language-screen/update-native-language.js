@@ -17,7 +17,10 @@ import {
 } from "../../store/slices/native-language/native-language-delete";
 import remove_icon from "../../assets/images/remove_icon.png";
 import { nativeLanguageUpdateThunk } from "../../store/slices";
-import { getNativeGetIdResponse, nativeLanguageGetIdThunk } from "../../store/slices/native-language/get-id-native-language";
+import {
+  getNativeGetIdResponse,
+  nativeLanguageGetIdThunk,
+} from "../../store/slices/native-language/get-id-native-language";
 
 export const UpdateNativeLanguage = () => {
   const [form] = Form.useForm();
@@ -31,11 +34,6 @@ export const UpdateNativeLanguage = () => {
   const [categoryShow, setCategoryShow] = useState();
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
   const nativeLanguageData = useSelector(getNativeGetIdResponse)?.data;
-  console.log(
-    nativeLanguageData?.imageFile,
-    categoryShow,
-    "native data"
-  );
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
   // console.log(`${baseUrl}${nativeData?.imageFile?.path}`, "baseUrl");
@@ -56,8 +54,8 @@ export const UpdateNativeLanguage = () => {
   };
 
   useEffect(() => {
-    dispatch(nativeLanguageGetIdThunk(nativeId))
-  }, [])
+    dispatch(nativeLanguageGetIdThunk(nativeId));
+  }, []);
   useEffect(() => {
     if (nativeCreateBool === true) {
     }

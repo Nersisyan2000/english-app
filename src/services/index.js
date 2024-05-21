@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Navigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import { LogOut } from "../helper/logout";
 
 import { redirect } from "react-router-dom";
@@ -14,7 +14,6 @@ export const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  console.log(config,"config")
   //   const Lang = localStorage.getItem("i18n")?.toLowerCase();
   const Token = localStorage.getItem("token");
 
@@ -33,13 +32,15 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
-api.interceptors.response.use((response) => {
-  return response
-}, error => {
-  if(error.response.status === 401){
-    localStorage.clear();
-    window.location = '/';
-    return <redirect to="/login"/>;
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  (error) => {
+    if (error.response.status === 401) {
+      localStorage.clear();
+      window.location = "/";
+      return <redirect to="/login" />;
+    }
   }
-})
-
+);

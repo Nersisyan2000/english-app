@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   learningLanguagesThunk,
   learningLanguages,
-} from "../../store/slices/lern-language/learn-languages-slice";
+} from "../../store/slices/learn-language/learn-languages-slice";
 
 export const LearningLanguageScreen = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
