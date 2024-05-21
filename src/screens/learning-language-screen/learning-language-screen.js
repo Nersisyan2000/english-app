@@ -39,7 +39,7 @@ export const LearningLanguageScreen = () => {
         <div className="learningLanguageCardItems">
           {learningLanguagesData?.data?.list.map((lang) => {
             return (
-              <div className="pointer">
+              <div className="pointer" key={lang?.id}>
                 <LearningLanguageItemCard
                   title={lang.name}
                   count={learningLanguagesData?.data?.total}

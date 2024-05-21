@@ -13,10 +13,11 @@ import { CustomAntdButtonDelete, CustomAntdInput } from "../../components";
 import {
   deleteNativeDeleteBool,
   getNativeDeleteBool,
+  getNativeDeleteloading,
   nativeLanguageDeleteThunk,
 } from "../../store/slices/native-language/native-language-delete";
 import remove_icon from "../../assets/images/remove_icon.png";
-import { nativeLanguageUpdateThunk } from "../../store/slices";
+import { deleteNativeUpdateBool, getNativeUpdateBool, getNativeUpdateLoading, nativeLanguageUpdateThunk } from "../../store/slices";
 import {
   getNativeGetIdResponse,
   nativeLanguageGetIdThunk,
@@ -34,6 +35,10 @@ export const UpdateNativeLanguage = () => {
   const [categoryShow, setCategoryShow] = useState();
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
   const nativeLanguageData = useSelector(getNativeGetIdResponse)?.data;
+  const nativeUpdateLoading = useSelector(getNativeUpdateLoading);
+  const nativeDeleteLoading = useSelector(getNativeDeleteloading);
+  const nativeUpdateBool = useSelector(getNativeUpdateBool)
+  console.log(nativeUpdateBool, "log bool")
 
   const baseUrl = process.env.REACT_APP_BASE_URL;
   // console.log(`${baseUrl}${nativeData?.imageFile?.path}`, "baseUrl");
@@ -56,11 +61,12 @@ export const UpdateNativeLanguage = () => {
   useEffect(() => {
     dispatch(nativeLanguageGetIdThunk(nativeId));
   }, []);
-  useEffect(() => {
-    if (nativeCreateBool === true) {
-    }
-    dispatch(deleteNativeCreateBool());
-  }, [nativeCreateBool]);
+
+  // useEffect(() => {
+  //   if (nativeCreateBool === true) {
+  //   }
+  //   dispatch(deleteNativeCreateBool());
+  // }, [nativeCreateBool]);
 
   const handleChange = (info) => {
     setCategoryShow(info.file);
@@ -83,7 +89,6 @@ export const UpdateNativeLanguage = () => {
     },
   };
 
-  const defaultImgae = {};
 
   useEffect(() => {
     form.setFieldsValue({
@@ -94,11 +99,12 @@ export const UpdateNativeLanguage = () => {
   }, [nativeLanguageData]);
 
   useEffect(() => {
-    if (deleteBool === true) {
+    if (deleteBool === true || nativeUpdateBool === true) {
       navigate("/native-language");
     }
     dispatch(deleteNativeDeleteBool());
-  }, [deleteBool]);
+    dispatch(deleteNativeUpdateBool())
+  }, [deleteBool, nativeUpdateBool]);
 
   return (
     <div className="nativeLanguageScreenMainDiv">
@@ -159,9 +165,10 @@ export const UpdateNativeLanguage = () => {
         </Form.Item>
 
         <Form.Item>
-          <CustomAntdButton title="Update" background={Colors.PURPLE} />
+          <CustomAntdButton title="Update" background={Colors.PURPLE} loading={nativeUpdateLoading} />
           <div className="deleteButton">
             <CustomAntdButtonDelete
+              loading={nativeDeleteLoading}
               title="Delete"
               background={Colors.GRAY_COLOR}
               onClick={() => {
