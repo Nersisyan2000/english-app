@@ -8,13 +8,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   learningLanguagesThunk,
   learningLanguages,
+  getLearnLanguagesLoading,
 } from "../../store/slices/learn-language/learn-languages-slice";
+import { CustomSpin } from "../../components/custom-spin/custom-spin";
 
 export const LearningLanguageScreen = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const learningLanguagesData = useSelector(learningLanguages);
+  const learnLanguagesLoading = useSelector(getLearnLanguagesLoading);
 
   const navigateToCreateScreen = () => {
     navigate("/learning-language-create");
@@ -23,6 +26,14 @@ export const LearningLanguageScreen = () => {
   useEffect(() => {
     dispatch(learningLanguagesThunk());
   }, []);
+
+  if (learnLanguagesLoading) {
+    return (
+      <div className="learningLanguageScreenLoadingDiv">
+        <CustomSpin size={64} color="gray" />
+      </div>
+    );
+  }
 
   return (
     <div

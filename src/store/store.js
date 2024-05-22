@@ -16,6 +16,8 @@ import {
   learningLanguagesSlice,
   createLearnLanguageSlice,
   learnLanguageDeleteSlice,
+  learnLanguageByIdSlice,
+  learnLanguageUpdateSlice,
 } from "./slices";
 import { categoryUpdateSlice } from "./slices/category/update-category";
 import { nativeLanguageGetIdSlice } from "./slices/native-language/get-id-native-language";
@@ -40,5 +42,7 @@ export const store = configureStore({
     learningLanguagesSlice: learningLanguagesSlice.reducer,
     createLearnLanguageSlice: createLearnLanguageSlice.reducer,
     learnLanguageDeleteSlice: learnLanguageDeleteSlice.reducer,
+    learnLanguageByIdSlice: learnLanguageByIdSlice.reducer,
+    learnLanguageUpdateSlice: learnLanguageUpdateSlice.reducer,
   },
 });
