@@ -7,29 +7,46 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./user-screen.css";
 import { useTranslation } from "react-i18next";
+import { userCreateThunk } from "../../store/slices/user/create-user";
+import CsutomAntdSelect from "../../components/custom-antd-select/custom-antd-select";
 
 export const UserCreateScreen = () => {
   const [form] = Form.useForm();
   const { t } = useTranslation();
-
+const [selected,setSelected] = useState()
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const formData = new FormData();
-  const [categoryFileList, setCategoryFileList] = useState([]);
   const [categoryShow, setCategoryShow] = useState();
-  const [showCategoryUpload, setCatgeoryShowUpload] = useState();
+  console.log(selected,"selectes")
+
+  const data = [
+    {
+      value: '1',
+      label: 'admin',
+    },
+    {
+      value: '2',
+      label: 'client',
+    },
+    {
+      value: '3',
+      label: 'operator',
+    },
+  ]
 
   const onFinish = (values) => {
-    if (values.category_image.file != "") {
-      formData.append("name", values.category_name);
-      formData.append("localization", values.category_string);
-      formData.append("image", categoryShow);
-      // dispatch(categoryCreateThunk(formData));
-      form.resetFields();
-      setCategoryShow("");
-    } else {
-      console.log(values, "values");
+    const onFinshData = {
+      firstName:values.firstName,
+      lastName:values.lastName,
+      phoneNumber:values.phoneNumber,
+      email:values.email,
+      password:values.password,
+      role:selected
     }
+    dispatch(userCreateThunk(onFinshData))
+    form.resetFields()
+    setSelected("")
   };
   return (
     <div
@@ -46,28 +63,22 @@ export const UserCreateScreen = () => {
           maxWidth: 600,
         }}
       >
-        <div className="category_row_input">
-          <CustomAntdInput name="first_name" placeholder=" First Name*" />
-          <CustomAntdInput name="last_name" placeholder="Last Name*" />
+        <div className="category_row_input_user">
+          <CustomAntdInput name="firstName" placeholder=" First Name*" type="text" min={3} />
+          <div className="left">
+          <CustomAntdInput name="lastName" placeholder="Last Name*"type="text" min={3} />
+          </div>
         </div>
-        <div className="category_row_input">
-          <CustomAntdInput name="phone" placeholder="Phone*" />
-          <CustomAntdInput name="email" placeholder="Email*" />
+        <div className="category_row_input_user">
+          <CustomAntdInput name="phoneNumber" placeholder="Phone*" className="dddd" type="text" min={3}/>
+          <div className="left">
+          <CustomAntdInput name="email" placeholder="Email*" type="email" min={3}/>
+          </div>
         </div>
-        <div className="category_row_input">
-          <CustomAntdInput name="password" placeholder="Password*" />
-          <CustomSelect title={t("SUBSCRIPTION")} />
+        <div className="category_row_input_user">
+          <CustomAntdInput name="password" placeholder="Password*" type="password" min={6}/>
+          <CsutomAntdSelect optinData={data}setSelected={setSelected} selected={selected} />
         </div>
-
-        <Form.Item
-          name="category_image"
-          rules={[
-            {
-              required: true,
-            },
-          ]}
-        ></Form.Item>
-
         <Form.Item>
           <CustomAntdButton title="Add" background={Colors.PURPLE} />
         </Form.Item>
