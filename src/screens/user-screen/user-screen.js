@@ -1,13 +1,14 @@
 import React from "react";
 import { Colors } from "../../assets/colors/colors";
 import "../../global-styles/index";
-import { CustomAddNew, CustomSelect, MyCustomTable } from "../../components";
+import { CustomAddNew, CustomSelect, CustomTable, MyCustomTable } from "../../components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
 export const UserScreen = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const tableData = [];
   return (
     <div
       className="nativeLanguageScreenMainDiv"
@@ -27,7 +28,7 @@ export const UserScreen = () => {
           <CustomSelect title={t("VERIFED_BY_EMAIL")} />
         </div>
 
-        {/* <MyCustomTable /> */}
+        <CustomTable tableData={tableData}/>
       </div>
     </div>
   );
