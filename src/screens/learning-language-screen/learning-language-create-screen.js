@@ -47,7 +47,7 @@ export const LearningLanguageCreateScreen = () => {
       // formData.append("localization", values.learningLanguageImg);
       formData.append("image", learningLanguageFile);
       languages.forEach((item, ind) => {
-        formData.append(`nativeLanguages[${ind}]`, item.key);
+        formData.append(`nativeLanguages[${ind}]`, item._id);
       });
       dispatch(createLearnLanguageThunk(formData));
       form.resetFields();
@@ -133,7 +133,7 @@ export const LearningLanguageCreateScreen = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
-        <SelectLanguage />
+        <SelectLanguage dataLanguages={languages}/>
       </div>
     </div>
   );

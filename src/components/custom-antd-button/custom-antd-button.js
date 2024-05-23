@@ -5,7 +5,7 @@ export const CustomAntdButton = ({ title, background, loading }) => {
   return (
     <Button type="primary" htmlType="submit" style={{ background: background }}>
       {loading ? (
-        <div className="loadingDiv">
+        <div className="loadingButtonDiv">
           <p>{title}</p>
           <CustomSpin color="white" size={24} />
         </div>

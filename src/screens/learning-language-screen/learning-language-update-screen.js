@@ -50,6 +50,8 @@ export const LearningLanguageUpdate = () => {
   const languagesData = learningLanguageData?.data?.nativeLanguages;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
   console.log(updateBool, "updateBool");
+  const updateSelect = useSelector(getUpdatedLanguages);
+
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -204,7 +206,7 @@ export const LearningLanguageUpdate = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
-        <SelectLanguage dataLanguages={languagesData} />
+        <SelectLanguage dataLanguages={updateSelect} />
       </div>
     </div>
   );

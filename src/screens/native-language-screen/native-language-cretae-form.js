@@ -88,10 +88,10 @@ export const NativeLanguageCretae = () => {
           maxWidth: 600,
         }}
       >
-<div className="nativeInput">
-<CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
-<CustomAntdInput name="name" placeholder="Native Name*" />
-</div>
+        <div className="nativeInput">
+          <CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
+          <CustomAntdInput name="name" placeholder="Native Name*" />
+        </div>
 
         <Form.Item
           name="image"

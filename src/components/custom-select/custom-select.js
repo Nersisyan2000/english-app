@@ -2,7 +2,6 @@ import { Select } from "antd";
 import { useDispatch } from "react-redux";
 import {
   addLanguages,
-  addUpdatedLanguages,
   getNewArr,
 } from "../../store/slices";
 

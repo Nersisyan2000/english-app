@@ -24,6 +24,11 @@ export const learnLanguageByIdSlice = createSlice({
   name: "learnLanguageById",
   initialState,
   reducers: {
+    removeSelectedLanguagesItem: (state, action) => {
+      state.learnUpdatedLanguages = state.learnUpdatedLanguages.filter(
+        (item) => item._id !== action.payload
+      );
+    },
     getNewArr: (state, { payload }) => {
       if (payload) {
         state.learnUpdatedLanguages.push(payload);
@@ -48,7 +53,7 @@ export const learnLanguageByIdSlice = createSlice({
   },
 });
 
-export const { getNewArr } = learnLanguageByIdSlice.actions;
+export const { getNewArr,removeSelectedLanguagesItem } = learnLanguageByIdSlice.actions;
 
 export const getLearnLanguageByIdLoading = (state) => {
   return state.learnLanguageByIdSlice.learnLanguageByIdLoading;

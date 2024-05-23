@@ -9,15 +9,16 @@ import {
   addLanguages,
   getUpdatedLanguages,
   learnLanguageSelectedLanguages,
-  removeLanguagesItem,
+  removeSelectedLanguagesItem,
 } from "../../../../store/slices";
 
 export const SelectLanguage = ({ dataLanguages }) => {
   const dispatch = useDispatch();
   const [newLanguages, setNewLanguages] = useState();
-  const languages = useSelector(learnLanguageSelectedLanguages);
+  // const languages = useSelector(learnLanguageSelectedLanguages);
+  // console.log(languages,"lang")
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
-  const data = useSelector(getUpdatedLanguages);
+  
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {
     return {
       _id: lang.id,
@@ -27,12 +28,12 @@ export const SelectLanguage = ({ dataLanguages }) => {
   });
 
   const onDelete = (id) => {
-    dispatch(removeLanguagesItem(id));
+    dispatch(removeSelectedLanguagesItem(id));
   };
 
-  useEffect(() => {
-    dispatch(addLanguages(filteredResponse));
-  }, [nativeLanguagesResponse?.nativeLanguages]);
+  // useEffect(() => {
+  //   dispatch(addLanguages(filteredResponse));
+  // }, [nativeLanguagesResponse?.nativeLanguages]);
 
   return (
     <div className="selectLanguageMainDiv">
@@ -42,7 +43,7 @@ export const SelectLanguage = ({ dataLanguages }) => {
         optionsData={filteredResponse}
       />
       <div className="selectLanguageValuesDiv">
-        {data?.map((lang) => {
+        {dataLanguages?.map((lang) => {
           return (
             <div
               key={lang._id}

@@ -1,14 +1,15 @@
 import { Colors } from "../../assets/colors";
-import { Form } from "antd";
+import { Form ,message} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
 import { CustomSelect, CustomAntdInput } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./user-screen.css";
 import { useTranslation } from "react-i18next";
-import { userCreateThunk } from "../../store/slices/user/create-user";
+import { deleteUserCreateResponse, getUserCreateData, userCreateThunk } from "../../store/slices/user/create-user";
 import CsutomAntdSelect from "../../components/custom-antd-select/custom-antd-select";
+import { Error, Success } from "../../components/custom-message/custom-message";
 
 export const UserCreateScreen = () => {
   const [form] = Form.useForm();
@@ -18,6 +19,9 @@ const [selected,setSelected] = useState()
   const navigate = useNavigate();
   const formData = new FormData();
   const [categoryShow, setCategoryShow] = useState();
+  const [messageApi, contextHolder] = message.useMessage();
+  const createUserData = useSelector(getUserCreateData);
+
   console.log(selected,"selectes")
 
   const data = [
@@ -48,6 +52,15 @@ const [selected,setSelected] = useState()
     form.resetFields()
     setSelected("")
   };
+  const messageError = createUserData?.message;
+
+  useEffect(() => {
+    createUserData?.success === true && Success({ messageApi });
+    createUserData?.success === false &&
+      Error({ messageApi, messageError });
+    dispatch(deleteUserCreateResponse());
+  }, [createUserData?.success]);
+
   return (
     <div
       className="authScreenFilesDiv"
@@ -80,6 +93,8 @@ const [selected,setSelected] = useState()
           <CsutomAntdSelect optinData={data}setSelected={setSelected} selected={selected} />
         </div>
         <Form.Item>
+        {contextHolder}
+
           <CustomAntdButton title="Add" background={Colors.PURPLE} />
         </Form.Item>
       </Form>
