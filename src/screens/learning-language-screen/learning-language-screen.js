@@ -36,8 +36,6 @@ export const LearningLanguageScreen = () => {
 
   useEffect(() => {
     dispatch(learningLanguagesThunk());
-    dispatch(removeAllLanguages());
-    dispatch(changeLearnLanguageCreateSuccess());
   }, []);
 
   return (

@@ -22,7 +22,7 @@ export const LoginScreen = () => {
 
   return (
     <div
-      className="authScreenMainDiv"
+      className="loginScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE }}
     >
       <div className="authScreenSubDiv">
