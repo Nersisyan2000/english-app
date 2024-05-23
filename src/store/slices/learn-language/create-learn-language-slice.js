@@ -25,6 +25,10 @@ export const createLearnLanguageSlice = createSlice({
   name: "createLearnLanguage",
   initialState,
   reducers: {
+    deleteLerningCreateResponse: (state) => {
+      state.createLearnLanguageResponse = "";
+    },
+
     addLanguages: (state, { payload }) => {
       state.selectedLanguages.push(payload);
     },
@@ -64,6 +68,7 @@ export const {
   removeLanguagesItem,
   changeLearnLanguageCreateSuccess,
   removeAllLanguages,
+  deleteLerningCreateResponse,
 } = createLearnLanguageSlice.actions;
 
 export const learnLanguageCreateLoading = (state) => {
@@ -71,7 +76,7 @@ export const learnLanguageCreateLoading = (state) => {
 };
 
 export const learnLanguageCreateResponse = (state) => {
-  return state.createLearnLanguageSlice.learnLanguageCreateResponse;
+  return state.createLearnLanguageSlice.createLearnLanguageResponse;
 };
 
 export const learnLanguageCreateError = (state) => {

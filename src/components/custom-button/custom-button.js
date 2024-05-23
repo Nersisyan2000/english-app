@@ -17,7 +17,8 @@ export const CustomButton = ({
         onClick={handleSubmit}
         type="submit"
       >
-        {loading ? <CustomSpin color={Colors.WHITE} size={20} /> : buttonTitle}
+        <p>{buttonTitle}</p>
+        {loading && <CustomSpin color={Colors.WHITE} size={20} />}
         {buttonIcon ? (
           <img src={buttonIcon} className="custtomButtonIcon" />
         ) : null}
