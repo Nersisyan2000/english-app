@@ -28,7 +28,6 @@ export const createLearnLanguageSlice = createSlice({
     deleteLerningCreateResponse: (state) => {
       state.createLearnLanguageResponse = "";
     },
-
     addLanguages: (state, { payload }) => {
       state.selectedLanguages.push(payload);
     },

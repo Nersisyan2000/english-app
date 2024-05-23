@@ -12,13 +12,14 @@ import {
   deleteLearnBool,
   deleteLearnUpdateBool,
   getLearnLanguageByIdResponse,
+  getNewArr,
+  getUpdatedLanguages,
   getUpdatedLearnLanguageBool,
   getUpdatedLearnLanguageLoading,
   learnLangBool,
   learnLanguageByIdThunk,
   learnLanguageDeleteLoading,
   learnLanguageDeleteThunk,
-  learnLanguageSelectedLanguages,
   learnLanguageUpdateThunk,
   nativeLanguageGetThunk,
 } from "../../store/slices";
@@ -42,12 +43,13 @@ export const LearningLanguageUpdate = () => {
   const deleteBool = useSelector(learnLangBool);
   const updateBool = useSelector(getUpdatedLearnLanguageBool);
   const learningLanguageData = useSelector(getLearnLanguageByIdResponse);
+  console.log(learningLanguageData, "log new dtata");
   const deleteLerningLoading = useSelector(learnLanguageDeleteLoading);
   const updateLearningLoading = useSelector(getUpdatedLearnLanguageLoading);
   const learningData = learningLanguageData?.data;
-  const learnNativeLanguages = learningData?.nativeLanguages;
-  const data = useSelector(learnLanguageSelectedLanguages);
-  console.log(data, "loff data");
+  const languagesData = learningLanguageData?.data?.nativeLanguages;
+  const lerningLangAllData = useSelector(getUpdatedLanguages);
+  console.log(updateBool, "updateBool");
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -56,6 +58,9 @@ export const LearningLanguageUpdate = () => {
       learningLanguageFile && formData.append("image", learningLanguageFile);
       formData.append("id", learningData.id);
       formData.append("active", learningData?.active);
+      lerningLangAllData.forEach((item, ind) => {
+        formData.append(`nativeLanguages[${ind}]`, item._id);
+      });
       dispatch(learnLanguageUpdateThunk(formData));
       form.resetFields();
       setLearningLanguageFile("");
@@ -84,10 +89,18 @@ export const LearningLanguageUpdate = () => {
       newFileList?.splice(index, 1);
     },
   };
+  const data = {
+    skip: 0,
+    limit: 12,
+  };
+  useEffect(() => {
+    dispatch(nativeLanguageGetThunk(data));
+  }, []);
 
   useEffect(() => {
     dispatch(learnLanguageByIdThunk(learningId));
-  }, []);
+    dispatch(getNewArr());
+  }, [learningLanguageData?.data?.nativeLanguages?.length]);
 
   useEffect(() => {
     form.setFieldsValue({
@@ -191,7 +204,7 @@ export const LearningLanguageUpdate = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
-        <SelectLanguage nativeLearnLanguages={learnNativeLanguages} />
+        <SelectLanguage dataLanguages={languagesData} />
       </div>
     </div>
   );

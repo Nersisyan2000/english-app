@@ -5,6 +5,7 @@ const initialState = {
   learnLanguageByIdLoading: false,
   learnLanguageByIdResponse: null,
   learnLanguageByIdError: null,
+  learnUpdatedLanguages: [],
 };
 
 export const learnLanguageByIdThunk = createAsyncThunk(
@@ -22,7 +23,16 @@ export const learnLanguageByIdThunk = createAsyncThunk(
 export const learnLanguageByIdSlice = createSlice({
   name: "learnLanguageById",
   initialState,
-  reducers: {},
+  reducers: {
+    getNewArr: (state, { payload }) => {
+      if (payload) {
+        state.learnUpdatedLanguages.push(payload);
+      } else {
+        state.learnUpdatedLanguages =
+          state.learnLanguageByIdResponse?.data?.nativeLanguages;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(learnLanguageByIdThunk.pending, (state) => {
       state.learnLanguageByIdLoading = true;
@@ -38,6 +48,8 @@ export const learnLanguageByIdSlice = createSlice({
   },
 });
 
+export const { getNewArr } = learnLanguageByIdSlice.actions;
+
 export const getLearnLanguageByIdLoading = (state) => {
   return state.learnLanguageByIdSlice.learnLanguageByIdLoading;
 };
@@ -48,4 +60,8 @@ export const getLearnLanguageByIdResponse = (state) => {
 
 export const getLearnLanguageByIdError = (state) => {
   return state.learnLanguageByIdSlice.learnLanguageByIdError;
+};
+
+export const getUpdatedLanguages = (state) => {
+  return state.learnLanguageByIdSlice.learnUpdatedLanguages;
 };

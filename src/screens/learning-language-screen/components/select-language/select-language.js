@@ -7,16 +7,17 @@ import { getNativeGetResponse } from "../../../../store/slices/native-language/n
 
 import {
   addLanguages,
-  getLearnLanguageByIdResponse,
+  getUpdatedLanguages,
   learnLanguageSelectedLanguages,
   removeLanguagesItem,
 } from "../../../../store/slices";
 
-export const SelectLanguage = ({ nativeLearnLanguages }) => {
+export const SelectLanguage = ({ dataLanguages }) => {
   const dispatch = useDispatch();
-  const [seletcData, setSelectData] = useState();
+  const [newLanguages, setNewLanguages] = useState();
   const languages = useSelector(learnLanguageSelectedLanguages);
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
+  const data = useSelector(getUpdatedLanguages);
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {
     return {
       _id: lang.id,
@@ -24,8 +25,6 @@ export const SelectLanguage = ({ nativeLearnLanguages }) => {
       nameEng: lang.name,
     };
   });
-
-  console.log(filteredResponse, "logggg");
 
   const onDelete = (id) => {
     dispatch(removeLanguagesItem(id));
@@ -43,7 +42,7 @@ export const SelectLanguage = ({ nativeLearnLanguages }) => {
         optionsData={filteredResponse}
       />
       <div className="selectLanguageValuesDiv">
-        {nativeLearnLanguages?.map((lang) => {
+        {data?.map((lang) => {
           return (
             <div
               key={lang._id}

@@ -61,7 +61,7 @@
 
 .loadingDiv {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  height: 50vh;
   background-color: purpe;
 }
