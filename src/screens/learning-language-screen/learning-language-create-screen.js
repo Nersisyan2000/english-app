@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Form, Upload } from "antd";
-import { useDispatch } from "react-redux";
+import { Form, Upload, message } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 import uploadImage from "../../assets/images/uploadImg.png";
 import { CustomAntdButton, CustomAntdInput } from "../../components";
 import { Colors } from "../../assets/colors";
 import "../../global-styles/global-styles.css";
 import { SelectLanguage } from "./components/";
 import { nativeLanguageGetThunk } from "../../store/slices/native-language/native-language-get";
+import {
+  createLearnLanguageThunk,
+  learnLanguageCreateResponse,
+  learnLanguageSelectedLanguages,
+  learnLanguagesCreateSuccess,
+} from "../../store/slices/learn-language/create-learn-language-slice";
+import { useNavigate } from "react-router-dom";
+import { Error, Success } from "../../components/custom-message/custom-message";
 
 export const LearningLanguageCreateScreen = () => {
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const formData = new FormData();
   const [learningLanguageFileList, setLearningLanguageFileList] = useState([]);
   const [learningLanguageFile, setLearningLanguageFile] = useState();
   const [showLearningLanguageUpload, setShowLearningLanguageUpload] =
     useState();
+  const languages = useSelector(learnLanguageSelectedLanguages);
+  const learnLanguageCreateSuccess = useSelector(learnLanguagesCreateSuccess);
+  const createLearnLanguageResponse = useSelector(learnLanguageCreateResponse);
+  const messageError = createLearnLanguageResponse?.message;
+  const [messageApi, contextHolder] = message.useMessage();
 
   useEffect(() => {
     const data = {
@@ -26,11 +40,16 @@ export const LearningLanguageCreateScreen = () => {
   }, []);
 
   const onFinish = (values) => {
-    if (values.learningLanguageImg.file != "") {
+    console.log(values, "values");
+    if (values.learningLanguageImage.file != "") {
+      formData.append("nameEng", values.nameEng);
       formData.append("name", values.learningLanguageImg);
       formData.append("localization", values.learningLanguageImg);
       formData.append("image", learningLanguageFile);
-      // dispatch(categoryCreateThunk(formData));
+      languages.forEach((item, ind) => {
+        formData.append(`nativeLanguages[${ind}}]`, item.key);
+      });
+      dispatch(createLearnLanguageThunk(formData));
       form.resetFields();
       setLearningLanguageFile("");
     } else {
@@ -49,6 +68,15 @@ export const LearningLanguageCreateScreen = () => {
   const beforeUpload = () => {
     return false;
   };
+
+  useEffect(() => {
+    createLearnLanguageResponse?.success === true && Success({ messageApi });
+    createLearnLanguageResponse?.success === false &&
+      Error({ messageApi, messageError });
+    if (learnLanguageCreateSuccess) {
+      navigate("/learning-language");
+    }
+  }, [createLearnLanguageResponse?.success, learnLanguageCreateSuccess]);
 
   const props = {
     accept: ".png",
@@ -103,6 +131,7 @@ export const LearningLanguageCreateScreen = () => {
           </Form.Item>
 
           <Form.Item>
+            {contextHolder}
             <CustomAntdButton title="Add" background={Colors.PURPLE} />
           </Form.Item>
         </Form>

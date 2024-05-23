@@ -2,27 +2,28 @@ import React, { useState } from "react";
 import { CustomSelect } from "../../../../components";
 import "./select-language-style.css";
 import { Colors } from "../../../../assets/colors";
-import britishIcon from "../../../../assets/images/britishCountryIcon.svg.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { getNativeGetResponse } from "../../../../store/slices/native-language/native-language-get";
+import {
+  learnLanguageSelectedLanguages,
+  removeLanguagesItem,
+} from "../../../../store/slices/learn-language/create-learn-language-slice";
 
 export const SelectLanguage = () => {
   const dispatch = useDispatch();
-  const [languages, setLanguages] = useState([]);
+  const languages = useSelector(learnLanguageSelectedLanguages);
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {
     return {
-      id: lang.id,
+      key: lang.id,
       value: lang.name.toLowerCase(),
       label: lang.name,
     };
   });
+  console.log(languages, "languages");
 
-  const onDelete = (searchItem) => {
-    const newLangsArr = languages.filter((lang) => {
-      return lang.label != searchItem;
-    });
-    setLanguages(newLangsArr);
+  const onDelete = (id) => {
+    dispatch(removeLanguagesItem(id));
   };
 
   return (
@@ -31,11 +32,9 @@ export const SelectLanguage = () => {
       <CustomSelect
         title="Choose Native Language *"
         optionsData={filteredResponse}
-        setLanguage={setLanguages}
-        languages={languages}
       />
       <div className="selectLanguageValuesDiv">
-        {languages.map((lang) => {
+        {languages?.map((lang) => {
           return (
             <div
               key={lang.id}
@@ -47,7 +46,7 @@ export const SelectLanguage = () => {
               <div
                 className="deleteIcon"
                 onClick={() => {
-                  onDelete(lang.label);
+                  onDelete(lang.key);
                 }}
               >
                 <span>x</span>

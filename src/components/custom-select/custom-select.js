@@ -1,30 +1,34 @@
 import { Select } from "antd";
-import { customSelectOptions } from "../../data/custom-select-data";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addLanguages,
+  learnLanguageSelectedLanguages,
+} from "../../store/slices/learn-language/create-learn-language-slice";
 
-export const CustomSelect = ({
-  title,
-  optionsData,
-  setLanguage,
-  languages,
-}) => {
+const { Option } = Select;
+
+export const CustomSelect = ({ title, optionsData }) => {
+  const dispatch = useDispatch();
+  const languages = useSelector(learnLanguageSelectedLanguages);
   const handleChange = (value) => {
-    setLanguage([
-      ...languages,
-      {
-        id: value.id,
-        label: value,
-      },
-    ]);
+    console.log(value, "value");
+    const selectedOption = optionsData.find((option) => option.key === value);
+    dispatch(addLanguages(selectedOption));
   };
 
   return (
     <div>
       <Select
-        defaultValue={title}
-        className="customSelect"
         onChange={handleChange}
-        options={optionsData}
-      />
+        className="customSelect"
+        defaultValue={title}
+      >
+        {optionsData?.map((option) => (
+          <Option key={option.key} value={option.key}>
+            {option.label}
+          </Option>
+        ))}
+      </Select>
     </div>
   );
 };
