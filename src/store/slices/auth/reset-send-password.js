@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { resetPassword } from "../../../services/auth/reset-password-service";
 
 const initialState = {
-  loading: false,
+  resetPasswordLoading: false,
   resetPasswordResponse: null,
   resetPasswordErrors: null,
 };
@@ -25,15 +25,27 @@ export const resetPasswordSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(resetPasswordThunk.pending, (state) => {
-      state.loading = true;
+      state.resetPasswordLoading = true;
     });
     builder.addCase(resetPasswordThunk.fulfilled, (state, { payload }) => {
-      state.loading = false;
+      state.resetPasswordLoading = false;
       state.resetPasswordResponse = payload;
     });
     builder.addCase(resetPasswordThunk.rejected, (state, { payload }) => {
-      state.loading = false;
+      state.resetPasswordLoading = false;
       state.resetPasswordErrors = payload;
     });
   },
 });
+
+export const resetPasswordLoading = (state) => {
+  return state.resetPasswordSlice.resetPasswordLoading;
+};
+
+export const resetPasswordResponse = (state) => {
+  return state.resetPasswordSlice.resetPasswordResponse;
+};
+
+export const resetPasswordError = (state) => {
+  return state.resetPasswordSlice.resetPasswordError;
+};

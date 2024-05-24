@@ -12,6 +12,7 @@ import {
   deleteLearnBool,
   deleteLearnUpdateBool,
   getLearnLanguageByIdResponse,
+  getNativeGetloading,
   getNewArr,
   getUpdatedLanguages,
   getUpdatedLearnLanguageBool,
@@ -22,9 +23,11 @@ import {
   learnLanguageDeleteThunk,
   learnLanguageUpdateThunk,
   nativeLanguageGetThunk,
+  removeUpdateLanguagesItem,
 } from "../../store/slices";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "./components";
+import CustomModal from "../../components/custom-modal/custom-modal";
 
 export const LearningLanguageUpdate = () => {
   const [form] = Form.useForm();
@@ -38,18 +41,17 @@ export const LearningLanguageUpdate = () => {
   const [showLearningLanguageUpload, setShowLearningLanguageUpload] =
     useState();
   const [fileList, setFileList] = useState([]);
-  const [categoryShow, setCategoryShow] = useState();
   const learningId = localStorage.getItem("learningId");
   const deleteBool = useSelector(learnLangBool);
   const updateBool = useSelector(getUpdatedLearnLanguageBool);
   const learningLanguageData = useSelector(getLearnLanguageByIdResponse);
-  console.log(learningLanguageData, "log new dtata");
   const deleteLerningLoading = useSelector(learnLanguageDeleteLoading);
   const updateLearningLoading = useSelector(getUpdatedLearnLanguageLoading);
   const learningData = learningLanguageData?.data;
-  const languagesData = learningLanguageData?.data?.nativeLanguages;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
-  console.log(updateBool, "updateBool");
+  const updateSelectedLanguages = useSelector(getUpdatedLanguages);
+  const nativeLanguagesLoading = useSelector(getNativeGetloading)
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -69,12 +71,20 @@ export const LearningLanguageUpdate = () => {
     }
   };
 
+  const onDelete = () => {
+    dispatch(learnLanguageDeleteThunk(learningData?.id));
+  };
+
   const handleChange = (info) => {
     setLearningLanguageFile(info.file);
     setShowLearningLanguageUpload(info.fileList[0]);
     if (!info.fileList[0]) {
       info.file = "";
     }
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
   };
 
   const beforeUpload = () => {
@@ -124,6 +134,11 @@ export const LearningLanguageUpdate = () => {
       style={{ backgroundColor: Colors.WHITE }}
     >
       <div className="learningLanguageUpdateFormDiv">
+        <CustomModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          onTab={onDelete}
+        />
         <p className="nativeLanguageTitle">{t("UPDATE_LEARNING_LANGUAGE")}</p>
         <Form
           autoComplete="off"
@@ -196,7 +211,7 @@ export const LearningLanguageUpdate = () => {
                 title="Delete"
                 background={Colors.GRAY_COLOR}
                 onClick={() => {
-                  dispatch(learnLanguageDeleteThunk(learningData?.id));
+                  showModal();
                 }}
               />
             </div>
@@ -204,7 +219,13 @@ export const LearningLanguageUpdate = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
-        <SelectLanguage dataLanguages={languagesData} />
+        <SelectLanguage
+          languages={updateSelectedLanguages}
+          onDelete={(id) => {
+            dispatch(removeUpdateLanguagesItem(id));
+          }}
+          loading={nativeLanguagesLoading}
+        />
       </div>
     </div>
   );

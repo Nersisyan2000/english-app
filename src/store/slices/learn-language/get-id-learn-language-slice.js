@@ -32,6 +32,11 @@ export const learnLanguageByIdSlice = createSlice({
           state.learnLanguageByIdResponse?.data?.nativeLanguages;
       }
     },
+    removeUpdateLanguagesItem: (state, action) => {
+      state.learnUpdatedLanguages = state.learnUpdatedLanguages.filter(
+        (item) => item._id !== action.payload
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(learnLanguageByIdThunk.pending, (state) => {
@@ -48,7 +53,8 @@ export const learnLanguageByIdSlice = createSlice({
   },
 });
 
-export const { getNewArr } = learnLanguageByIdSlice.actions;
+export const { getNewArr, removeUpdateLanguagesItem } =
+  learnLanguageByIdSlice.actions;
 
 export const getLearnLanguageByIdLoading = (state) => {
   return state.learnLanguageByIdSlice.learnLanguageByIdLoading;

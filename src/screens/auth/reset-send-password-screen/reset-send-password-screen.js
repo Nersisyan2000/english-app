@@ -1,15 +1,28 @@
 import React from "react";
 import { Formik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { CustomInputField, CustomButton } from "../../../components";
 import { Colors } from "../../../assets/colors/index";
 import { useTranslation } from "react-i18next";
-import { resetPasswordThunk } from "../../../store/slices/auth";
+import {
+  resetPasswordLoading,
+  resetPasswordThunk,
+  savedCode,
+  savedEmail,
+} from "../../../store/slices";
 import "../../../global-styles/global-styles.css";
+import { resetPasswordValidation } from "../../../validations";
 
 export const ResetSendPasswordScreen = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const reduxCode = useSelector(savedCode);
+  const storageCode = localStorage.getItem("code");
+  const code = reduxCode ? reduxCode : storageCode;
+  const reduxEmail = useSelector(savedEmail);
+  const storageEmail = localStorage.getItem("email");
+  const email = reduxEmail ? reduxEmail : storageEmail;
+  const resetPasswordLoadingData = useSelector(resetPasswordLoading);
 
   return (
     <div
@@ -21,9 +34,10 @@ export const ResetSendPasswordScreen = () => {
         <Formik
           initialValues={{ username: "", password: "" }}
           onSubmit={(values) => {
-            dispatch(resetPasswordThunk(values));
+            const password = values.password;
+            dispatch(resetPasswordThunk({ email, code, password }));
           }}
-          // validationSchema={loginValidatoinSchema}
+          validationSchema={resetPasswordValidation}
         >
           {({
             values,
@@ -43,6 +57,9 @@ export const ResetSendPasswordScreen = () => {
                 value={values.email}
                 isPassword={true}
               />
+              <p style={{ color: Colors.RED }}>
+                {errors.password && touched.password && errors.password}
+              </p>
               <CustomInputField
                 type="password"
                 name="confirmPassword"
@@ -53,9 +70,14 @@ export const ResetSendPasswordScreen = () => {
                 isPassword={true}
               />
               <p style={{ color: Colors.RED }}>
-                {errors.username && touched.username && errors.username}
+                {errors.confirmPassword &&
+                  touched.confirmPassword &&
+                  errors.confirmPassword}
               </p>
-              <CustomButton buttonTitle={t("SEND_CODE")} />
+              <CustomButton
+                buttonTitle={t("SEND_CODE")}
+                loading={resetPasswordLoadingData}
+              />
             </form>
           )}
         </Formik>

@@ -35,7 +35,6 @@ export const UpdateNativeLanguage = () => {
   const navigate = useNavigate();
   const nativeId = localStorage.getItem("nativeId");
   const formData = new FormData();
-  const nativeCreateBool = useSelector(getNativeCreateBool);
   const deleteBool = useSelector(getNativeDeleteBool);
   const [fileList, setFileList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,9 +64,11 @@ export const UpdateNativeLanguage = () => {
   useEffect(() => {
     dispatch(nativeLanguageGetIdThunk(nativeId));
   }, []);
+
   const showModal = () => {
     setIsModalOpen(true);
-};
+  };
+
   const handleChange = (info) => {
     setCategoryShow(info.file);
     setCatgeoryShowUpload(info.fileList[0]);
@@ -106,12 +107,16 @@ export const UpdateNativeLanguage = () => {
   }, [deleteBool, nativeUpdateBool]);
 
   const onTab = () => {
-    dispatch(nativeLanguageDeleteThunk(nativeLanguageData?.id))
-  }
+    dispatch(nativeLanguageDeleteThunk(nativeLanguageData?.id));
+  };
   return (
     <div className="nativeLanguageScreenMainDiv">
+      <CustomModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        onTab={onTab}
+      />
       <p className="nativeLanguageTitle">Update Native Language</p>
-      <CustomModal isModalOpen={isModalOpen}  setIsModalOpen={setIsModalOpen} onTab={onTab}/>
 
       <Form
         autoComplete="off"
@@ -180,7 +185,8 @@ export const UpdateNativeLanguage = () => {
               title="Delete"
               background={Colors.GRAY_COLOR}
               onClick={() => {
-                showModal()
+                
+                showModal();
               }}
             />
           </div>

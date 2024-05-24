@@ -33,10 +33,11 @@ export const createLearnLanguageSlice = createSlice({
     },
     removeLanguagesItem: (state, action) => {
       state.selectedLanguages = state.selectedLanguages.filter(
-        (item) => item.key !== action.payload
+        (item) => item._id !== action.payload
       );
     },
     removeAllLanguages: (state) => {
+      console.log("aall");
       state.selectedLanguages = [];
     },
     changeLearnLanguageCreateSuccess: (state) => {

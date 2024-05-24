@@ -13,6 +13,7 @@ import {
   learnLanguageCreateResponse,
   learnLanguagesCreateSuccess,
   removeAllLanguages,
+  removeLanguagesItem,
 } from "../../store/slices/learn-language/create-learn-language-slice";
 import { useNavigate } from "react-router-dom";
 import { Error, Success } from "../../components/custom-message/custom-message";
@@ -47,7 +48,7 @@ export const LearningLanguageCreateScreen = () => {
       // formData.append("localization", values.learningLanguageImg);
       formData.append("image", learningLanguageFile);
       languages.forEach((item, ind) => {
-        formData.append(`nativeLanguages[${ind}]`, item.key);
+        formData.append(`nativeLanguages[${ind}]`, item._id);
       });
       dispatch(createLearnLanguageThunk(formData));
       form.resetFields();
@@ -88,7 +89,7 @@ export const LearningLanguageCreateScreen = () => {
 
   return (
     <div
-      className="authScreenMainDiv"
+      className="authScreenMainDiv learnLanguageCreateScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE, flexDirection: "row" }}
     >
       <div>
@@ -133,7 +134,12 @@ export const LearningLanguageCreateScreen = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
-        <SelectLanguage />
+        <SelectLanguage
+          languages={languages}
+          onDelete={(id) => {
+            dispatch(removeLanguagesItem(id));
+          }}
+        />
       </div>
     </div>
   );
