@@ -36,10 +36,6 @@ export const UpdateNativeLanguage = () => {
   const navigate = useNavigate();
   const nativeId = localStorage.getItem("nativeId");
   const formData = new FormData();
-<<<<<<< HEAD
-  const deleteBool = useSelector(getNativeDeleteBool);
-=======
->>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
   const [fileList, setFileList] = useState([]);
   const [messageApi, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -69,13 +65,10 @@ export const UpdateNativeLanguage = () => {
     }
   };
 
-<<<<<<< HEAD
   useEffect(() => {
     dispatch(nativeLanguageGetIdThunk(nativeId));
   }, []);
 
-=======
->>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -102,17 +95,16 @@ export const UpdateNativeLanguage = () => {
   };
 
   const messageError = nativeResponse?.message;
-  const messageErrorUpdate = nativeUpdateResponse?.message
+  const messageErrorUpdate = nativeUpdateResponse?.message;
 
   useEffect(() => {
     nativeResponse?.success === true && Success({ messageApi });
-    nativeResponse?.success === false &&
-      Error({ messageApi, messageError });
-       nativeUpdateResponse?.success === false  && 
-        Error({ messageApi, messageErrorUpdate });
+    nativeResponse?.success === false && Error({ messageApi, messageError });
+    nativeUpdateResponse?.success === false &&
+      Error({ messageApi, messageErrorUpdate });
     dispatch(deleteNativeDeleteResponse());
-    dispatch(deleteNativeUpdateResponse())
-  }, [nativeResponse?.success ,nativeUpdateResponse?.success ]);
+    dispatch(deleteNativeUpdateResponse());
+  }, [nativeResponse?.success, nativeUpdateResponse?.success]);
 
   useEffect(() => {
     form.setFieldsValue({
@@ -145,10 +137,6 @@ export const UpdateNativeLanguage = () => {
         onTab={onTab}
       />
       <p className="nativeLanguageTitle">Update Native Language</p>
-<<<<<<< HEAD
-=======
-      <CustomModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onTab={onTab} />
->>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
 
       <Form
         autoComplete="off"
@@ -215,7 +203,6 @@ export const UpdateNativeLanguage = () => {
               title="Delete"
               background={Colors.GRAY_COLOR}
               onClick={() => {
-                
                 showModal();
               }}
             />

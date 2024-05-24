@@ -58,12 +58,8 @@ export const learnLanguageByIdSlice = createSlice({
   },
 });
 
-<<<<<<< HEAD
-export const { getNewArr, removeUpdateLanguagesItem } =
+export const { getNewArr, removeSelectedLanguagesItem } =
   learnLanguageByIdSlice.actions;
-=======
-export const { getNewArr,removeSelectedLanguagesItem } = learnLanguageByIdSlice.actions;
->>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
 
 export const getLearnLanguageByIdLoading = (state) => {
   return state.learnLanguageByIdSlice.learnLanguageByIdLoading;
