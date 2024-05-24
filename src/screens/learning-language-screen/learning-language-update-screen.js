@@ -49,9 +49,14 @@ export const LearningLanguageUpdate = () => {
   const updateLearningLoading = useSelector(getUpdatedLearnLanguageLoading);
   const learningData = learningLanguageData?.data;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
+<<<<<<< HEAD
   const updateSelectedLanguages = useSelector(getUpdatedLanguages);
   const nativeLanguagesLoading = useSelector(getNativeGetloading)
   const [isModalOpen, setIsModalOpen] = useState(false);
+=======
+  const updateSelect = useSelector(getUpdatedLanguages);
+
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -145,9 +150,7 @@ export const LearningLanguageUpdate = () => {
           form={form}
           name="control-hooks"
           onFinish={onFinish}
-          style={{
-            maxWidth: 600,
-          }}
+          className="formAntd"
         >
           <p>{t("LANGUAGE_ENGLISH_NAME")}</p>
           <CustomAntdInput
@@ -219,6 +222,7 @@ export const LearningLanguageUpdate = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
+<<<<<<< HEAD
         <SelectLanguage
           languages={updateSelectedLanguages}
           onDelete={(id) => {
@@ -226,6 +230,9 @@ export const LearningLanguageUpdate = () => {
           }}
           loading={nativeLanguagesLoading}
         />
+=======
+        <SelectLanguage dataLanguages={updateSelect} />
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
       </div>
     </div>
   );

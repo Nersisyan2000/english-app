@@ -99,6 +99,7 @@ export const LearningLanguageCreateScreen = () => {
           form={form}
           name="createLearningLanguage"
           onFinish={onFinish}
+          className="formAntd"
         >
           <div className="createScreenRowInputs">
             <CustomAntdInput name="name" placeholder="Language English Name*" />
@@ -134,12 +135,16 @@ export const LearningLanguageCreateScreen = () => {
         </Form>
       </div>
       <div style={{ width: "44%" }}>
+<<<<<<< HEAD
         <SelectLanguage
           languages={languages}
           onDelete={(id) => {
             dispatch(removeLanguagesItem(id));
           }}
         />
+=======
+        <SelectLanguage dataLanguages={languages}/>
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
       </div>
     </div>
   );

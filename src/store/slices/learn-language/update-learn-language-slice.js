@@ -27,6 +27,7 @@ export const learnLanguageUpdateSlice = createSlice({
     deleteLearnUpdateBool: (state) => {
       state.learnLanguageBool = false;
     },
+  
   },
   extraReducers: (builder) => {
     builder.addCase(learnLanguageUpdateThunk.pending, (state) => {
@@ -47,7 +48,7 @@ export const learnLanguageUpdateSlice = createSlice({
   },
 });
 
-export const { deleteLearnUpdateBool } = learnLanguageUpdateSlice.actions;
+export const { deleteLearnUpdateBool,removeUpdateLanguagesItem } = learnLanguageUpdateSlice.actions;
 
 export const getUpdatedLearnLanguageBool = (state) => {
   return state.learnLanguageUpdateSlice.learnLanguageBool;

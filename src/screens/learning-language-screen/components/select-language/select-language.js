@@ -7,11 +7,26 @@ import { getNativeGetResponse } from "../../../../store/slices/native-language/n
 import { addLanguages } from "../../../../store/slices";
 import { CustomSpin } from "../../../../components/custom-spin/custom-spin";
 
+<<<<<<< HEAD
 export const SelectLanguage = ({ languages, onDelete, loading }) => {
   const dispatch = useDispatch();
   const [newLanguages, setNewLanguages] = useState();
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
 
+=======
+import {
+  addLanguages,
+  getUpdatedLanguages,
+  learnLanguageSelectedLanguages,
+  removeSelectedLanguagesItem,
+} from "../../../../store/slices";
+
+export const SelectLanguage = ({ dataLanguages }) => {
+  const dispatch = useDispatch();
+  const [newLanguages, setNewLanguages] = useState();
+  const nativeLanguagesResponse = useSelector(getNativeGetResponse);
+  
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {
     return {
       _id: lang.id,
@@ -20,13 +35,18 @@ export const SelectLanguage = ({ languages, onDelete, loading }) => {
     };
   });
 
+<<<<<<< HEAD
   const selectedDelete = (id) => {
     onDelete(id);
+=======
+  const onDelete = (id) => {
+    dispatch(removeSelectedLanguagesItem(id));
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
   };
 
-  useEffect(() => {
-    dispatch(addLanguages(filteredResponse));
-  }, [nativeLanguagesResponse?.nativeLanguages]);
+  // useEffect(() => {
+  //   dispatch(addLanguages(filteredResponse));
+  // }, [nativeLanguagesResponse?.nativeLanguages]);
 
   return (
     <div className="selectLanguageMainDiv">
@@ -36,6 +56,7 @@ export const SelectLanguage = ({ languages, onDelete, loading }) => {
         optionsData={filteredResponse}
       />
       <div className="selectLanguageValuesDiv">
+<<<<<<< HEAD
         {loading ? (
           <div
             style={{
@@ -50,6 +71,17 @@ export const SelectLanguage = ({ languages, onDelete, loading }) => {
         ) : (
           languages?.map((lang) => {
             return (
+=======
+        {dataLanguages?.map((lang) => {
+          return (
+            <div
+              key={lang._id}
+              className="selectLanguageValuesDivItem"
+              style={{ backgroundColor: Colors.BACKGROUND_COLOR }}
+            >
+              <span>{lang.name}</span>
+              <img src={lang.image} />
+>>>>>>> 021fb21df969fb2e0453c390d6da47a53bd04110
               <div
                 key={lang._id}
                 className="selectLanguageValuesDivItem"

@@ -33,14 +33,17 @@ export const LearningLanguageScreen = () => {
     localStorage.setItem("learningId", id);
     navigate("/learning-update");
   };
-
+  const data = {
+    skip: 0,
+    limit: 12,
+  };
   useEffect(() => {
-    dispatch(learningLanguagesThunk());
+    dispatch(learningLanguagesThunk(data));
   }, []);
 
   return (
     <div
-      className="learningLanguageScreenMainDiv"
+      className="nativeLanguageScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE }}
     >
       <div className="learningLanguageScreenSubDiv">
@@ -50,6 +53,7 @@ export const LearningLanguageScreen = () => {
             onClick={navigateToCreateScreen}
           />
         </div>
+        <p className="nativeLanguageTitle">Learning Language</p>
         {learnLanguagesLoading ? (
           <div className="learningLanguageScreenLoadingDiv loadingDiv">
             {" "}
@@ -74,7 +78,7 @@ export const LearningLanguageScreen = () => {
         )}
       </div>
       <div className="learningLanguageScreenPaginationDiv">
-        <CustomPagination />
+        <CustomPagination length={learningLanguagesData?.data?.total}/>
       </div>
     </div>
   );
