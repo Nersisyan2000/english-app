@@ -32,6 +32,7 @@ export const CategoryScreen = () => {
 
   return (
     <div className="nativeLanguageScreenMainDiv">
+      <div>
       <CustomAddNew
         title="Add New Category"
         onClick={() => {
@@ -48,6 +49,9 @@ export const CategoryScreen = () => {
       </div>
       <p className="category-table-title">Category</p>
       <div className="category-item-pagination">
+        {!categoryData?.length && !categoryLoading ? <div className="no_data">
+          <p  className="no_data_title">No Data</p>
+        </div> : null}
         {categoryLoading ? <div className="nativeLanguageScreenMainDiv"> <CustomSpin size={64} color="gray" /> </div> : <div className="custom-card-item">
           {categoryData?.map((countryItem, index) => {
             return (
@@ -63,10 +67,12 @@ export const CategoryScreen = () => {
             );
           })}
         </div>}
-        <div className="category-pagination">
+        </div>
+      
+      </div>
+      <div className="category-pagination">
           <CustomPagination length={categoryData?.length} />
         </div>
-      </div>
     </div>
   );
 };

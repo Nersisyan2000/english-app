@@ -98,6 +98,7 @@ export const LearningLanguageCreateScreen = () => {
           form={form}
           name="createLearningLanguage"
           onFinish={onFinish}
+          className="formAntd"
         >
           <div className="createScreenRowInputs">
             <CustomAntdInput name="name" placeholder="Language English Name*" />

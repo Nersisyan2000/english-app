@@ -9,9 +9,9 @@ import {
 export const CustomTable = ({tableData}) => {
   return(
     <Table
-    columns={customTableColumns}
-    dataSource={tableData}
-    className="customTable"
+      columns={customTableColumns}
+      dataSource={tableData}
+      className="customTable"
   />
   )
 };

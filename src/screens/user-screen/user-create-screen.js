@@ -22,8 +22,6 @@ const [selected,setSelected] = useState()
   const [messageApi, contextHolder] = message.useMessage();
   const createUserData = useSelector(getUserCreateData);
 
-  console.log(selected,"selectes")
-
   const data = [
     {
       value: '1',

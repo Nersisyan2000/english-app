@@ -43,13 +43,11 @@ export const LearningLanguageUpdate = () => {
   const deleteBool = useSelector(learnLangBool);
   const updateBool = useSelector(getUpdatedLearnLanguageBool);
   const learningLanguageData = useSelector(getLearnLanguageByIdResponse);
-  console.log(learningLanguageData, "log new dtata");
   const deleteLerningLoading = useSelector(learnLanguageDeleteLoading);
   const updateLearningLoading = useSelector(getUpdatedLearnLanguageLoading);
   const learningData = learningLanguageData?.data;
   const languagesData = learningLanguageData?.data?.nativeLanguages;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
-  console.log(updateBool, "updateBool");
   const updateSelect = useSelector(getUpdatedLanguages);
 
 
@@ -132,9 +130,7 @@ export const LearningLanguageUpdate = () => {
           form={form}
           name="control-hooks"
           onFinish={onFinish}
-          style={{
-            maxWidth: 600,
-          }}
+          className="formAntd"
         >
           <p>{t("LANGUAGE_ENGLISH_NAME")}</p>
           <CustomAntdInput

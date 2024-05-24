@@ -15,8 +15,6 @@ import {
 export const SelectLanguage = ({ dataLanguages }) => {
   const dispatch = useDispatch();
   const [newLanguages, setNewLanguages] = useState();
-  // const languages = useSelector(learnLanguageSelectedLanguages);
-  // console.log(languages,"lang")
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
   
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {

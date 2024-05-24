@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Form, Upload } from "antd";
+import { Form, Upload, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  deleteNativeCreateBool,
-  getNativeCreateBool,
-} from "../../store/slices/native-language/native-language-create";
 import uploadIcon from "../../assets/images/uploadImg.png";
 import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
 import { Colors } from "../../assets/colors";
@@ -12,14 +8,18 @@ import { useNavigate } from "react-router-dom";
 import { CustomAntdButtonDelete, CustomAntdInput } from "../../components";
 import {
   deleteNativeDeleteBool,
+  deleteNativeDeleteResponse,
   getNativeDeleteBool,
+  getNativeDeleteResponse,
   getNativeDeleteloading,
   nativeLanguageDeleteThunk,
 } from "../../store/slices/native-language/native-language-delete";
 import remove_icon from "../../assets/images/remove_icon.png";
 import {
   deleteNativeUpdateBool,
+  deleteNativeUpdateResponse,
   getNativeUpdateBool,
+  getNativeUpdateData,
   getNativeUpdateLoading,
   nativeLanguageUpdateThunk,
 } from "../../store/slices";
@@ -28,6 +28,7 @@ import {
   nativeLanguageGetIdThunk,
 } from "../../store/slices/native-language/get-id-native-language";
 import CustomModal from "../../components/custom-modal/custom-modal";
+import { Success, Error } from "../../components/custom-message/custom-message";
 
 export const UpdateNativeLanguage = () => {
   const [form] = Form.useForm();
@@ -35,16 +36,18 @@ export const UpdateNativeLanguage = () => {
   const navigate = useNavigate();
   const nativeId = localStorage.getItem("nativeId");
   const formData = new FormData();
-  const nativeCreateBool = useSelector(getNativeCreateBool);
-  const deleteBool = useSelector(getNativeDeleteBool);
   const [fileList, setFileList] = useState([]);
+  const [messageApi, contextHolder] = message.useMessage();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [categoryShow, setCategoryShow] = useState();
   const [showCategoryUpload, setCatgeoryShowUpload] = useState();
+  const deleteBool = useSelector(getNativeDeleteBool);
   const nativeLanguageData = useSelector(getNativeGetIdResponse)?.data;
   const nativeUpdateLoading = useSelector(getNativeUpdateLoading);
   const nativeDeleteLoading = useSelector(getNativeDeleteloading);
   const nativeUpdateBool = useSelector(getNativeUpdateBool);
+  const nativeResponse = useSelector(getNativeDeleteResponse);
+  const nativeUpdateResponse = useSelector(getNativeUpdateData);
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
   const onFinish = (values) => {
@@ -62,12 +65,10 @@ export const UpdateNativeLanguage = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(nativeLanguageGetIdThunk(nativeId));
-  }, []);
   const showModal = () => {
     setIsModalOpen(true);
-};
+  };
+
   const handleChange = (info) => {
     setCategoryShow(info.file);
     setCatgeoryShowUpload(info.fileList[0]);
@@ -89,6 +90,19 @@ export const UpdateNativeLanguage = () => {
     },
   };
 
+  const messageError = nativeResponse?.message;
+  const messageErrorUpdate = nativeUpdateResponse?.message
+
+  useEffect(() => {
+    nativeResponse?.success === true && Success({ messageApi });
+    nativeResponse?.success === false &&
+      Error({ messageApi, messageError });
+       nativeUpdateResponse?.success === false  && 
+        Error({ messageApi, messageErrorUpdate });
+    dispatch(deleteNativeDeleteResponse());
+    dispatch(deleteNativeUpdateResponse())
+  }, [nativeResponse?.success ,nativeUpdateResponse?.success ]);
+
   useEffect(() => {
     form.setFieldsValue({
       nameEng: nativeLanguageData?.nameEng,
@@ -98,7 +112,11 @@ export const UpdateNativeLanguage = () => {
   }, [nativeLanguageData]);
 
   useEffect(() => {
-    if (deleteBool === true || nativeUpdateBool === true) {
+    dispatch(nativeLanguageGetIdThunk(nativeId));
+  }, []);
+
+  useEffect(() => {
+    if (nativeResponse?.success === true || nativeUpdateBool === true) {
       navigate("/native-language");
     }
     dispatch(deleteNativeDeleteBool());
@@ -111,16 +129,14 @@ export const UpdateNativeLanguage = () => {
   return (
     <div className="nativeLanguageScreenMainDiv">
       <p className="nativeLanguageTitle">Update Native Language</p>
-      <CustomModal isModalOpen={isModalOpen}  setIsModalOpen={setIsModalOpen} onTab={onTab}/>
+      <CustomModal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onTab={onTab} />
 
       <Form
         autoComplete="off"
         form={form}
         name="control-hooks"
         onFinish={onFinish}
-        style={{
-          maxWidth: 600,
-        }}
+        className="formAntd"
       >
         <p>Language english name</p>
         <CustomAntdInput name="nameEng" placeholder=" Language English Name*" />
@@ -153,7 +169,6 @@ export const UpdateNativeLanguage = () => {
             </div>
           ) : (
             <Upload
-              // defaultFileList={[nativeData?.imageFile]}
               onChange={handleChange}
               beforeUpload={beforeUpload}
               {...props}
@@ -169,6 +184,7 @@ export const UpdateNativeLanguage = () => {
         </Form.Item>
 
         <Form.Item>
+          {contextHolder}
           <CustomAntdButton
             title="Update"
             background={Colors.PURPLE}
