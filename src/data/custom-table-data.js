@@ -6,12 +6,18 @@ export const customTableCountryData = {
   title: "England",
 };
 
+let num = 1;
+
 export const customTableColumns = [
   {
     title: "ID",
     dataIndex: "_id",
     key: "_id",
-    render: (text) => <a>{text}</a>,
+    render: (text) => {
+      const newTag = <a>{num}</a>;
+      num++;
+      return newTag;
+    },
   },
   {
     title: "User",

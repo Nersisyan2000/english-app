@@ -2,7 +2,7 @@ import { Select } from "antd";
 import { useDispatch } from "react-redux";
 import {
   addLanguages,
-  getNewArr,
+  addLearnLanguageSelectedLanguages,
 } from "../../store/slices";
 
 const { Option } = Select;
@@ -13,7 +13,7 @@ export const CustomSelect = ({ title, optionsData, languagesData }) => {
   const handleChange = (value) => {
     const selectedOption = optionsData.find((option) => option.name === value);
     dispatch(addLanguages(selectedOption));
-    dispatch(getNewArr(selectedOption));
+    dispatch(addLearnLanguageSelectedLanguages(selectedOption));
   };
 
   return (

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./learning-language-screen-style.css";
 import "../../global-styles/global-styles.css";
 import { Colors } from "../../assets/colors/colors";
-import { CustomAddNew, CustomPagination } from "../../components";
+import { CustomAddNew, CustomPagination, CustomSpin } from "../../components";
 import { LearningLanguageItemCard } from "./components";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +10,9 @@ import {
   learningLanguagesThunk,
   learningLanguages,
   getLearnLanguagesLoading,
-} from "../../store/slices/learn-language/learn-languages-slice";
-import { CustomSpin } from "../../components/custom-spin/custom-spin";
-import {
-  changeLearnLanguageCreateSuccess,
   learnLanguageByIdThunk,
-  removeAllLanguages,
 } from "../../store/slices";
+import {} from "../../components/custom-spin/custom-spin";
 
 export const LearningLanguageScreen = () => {
   const arr = [1, 2, 3, 4, 5, 6, 7, 8];

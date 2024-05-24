@@ -15,10 +15,8 @@ import {
 export const SelectLanguage = ({ dataLanguages }) => {
   const dispatch = useDispatch();
   const [newLanguages, setNewLanguages] = useState();
-  // const languages = useSelector(learnLanguageSelectedLanguages);
-  // console.log(languages,"lang")
   const nativeLanguagesResponse = useSelector(getNativeGetResponse);
-  
+
   const filteredResponse = nativeLanguagesResponse?.data?.list.map((lang) => {
     return {
       _id: lang.id,
@@ -50,7 +48,7 @@ export const SelectLanguage = ({ dataLanguages }) => {
               className="selectLanguageValuesDivItem"
               style={{ backgroundColor: Colors.BACKGROUND_COLOR }}
             >
-              <span>{lang.name}</span>
+              <span className="selectedLanguageName">{lang.name}</span>
               <img src={lang.image} />
               <div
                 className="deleteIcon"

@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from "react";
+import "./learning-language-screen-style.css";
 import { Form, Upload } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import "./learning-language-screen-style.css";
 import uploadIcon from "../../assets/images/uploadImg.png";
-import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
+import remove_icon from "../../assets/images/remove_icon.png";
 import { Colors } from "../../assets/colors";
 import { useNavigate } from "react-router-dom";
-import { CustomAntdButtonDelete, CustomAntdInput } from "../../components";
-import remove_icon from "../../assets/images/remove_icon.png";
+import {
+  CustomAntdButtonDelete,
+  CustomAntdInput,
+  CustomAntdButton,
+} from "../../components";
 import {
   deleteLearnBool,
   deleteLearnUpdateBool,
   getLearnLanguageByIdResponse,
-  getNewArr,
+  addLearnLanguageSelectedLanguages,
   getUpdatedLanguages,
   getUpdatedLearnLanguageBool,
   getUpdatedLearnLanguageLoading,
@@ -27,31 +30,26 @@ import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "./components";
 
 export const LearningLanguageUpdate = () => {
+  const fileList = [];
   const [form] = Form.useForm();
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const formData = new FormData();
+  const deleteBool = useSelector(learnLangBool);
+  const learningId = localStorage.getItem("learningId");
   const baseUrl = process.env.REACT_APP_BASE_URL;
   const [learningLanguageFileList, setLearningLanguageFileList] = useState([]);
   const [learningLanguageFile, setLearningLanguageFile] = useState();
   const [showLearningLanguageUpload, setShowLearningLanguageUpload] =
     useState();
-  const [fileList, setFileList] = useState([]);
-  const [categoryShow, setCategoryShow] = useState();
-  const learningId = localStorage.getItem("learningId");
-  const deleteBool = useSelector(learnLangBool);
   const updateBool = useSelector(getUpdatedLearnLanguageBool);
   const learningLanguageData = useSelector(getLearnLanguageByIdResponse);
-  console.log(learningLanguageData, "log new dtata");
   const deleteLerningLoading = useSelector(learnLanguageDeleteLoading);
   const updateLearningLoading = useSelector(getUpdatedLearnLanguageLoading);
   const learningData = learningLanguageData?.data;
-  const languagesData = learningLanguageData?.data?.nativeLanguages;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
-  console.log(updateBool, "updateBool");
   const updateSelect = useSelector(getUpdatedLanguages);
-
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -101,7 +99,7 @@ export const LearningLanguageUpdate = () => {
 
   useEffect(() => {
     dispatch(learnLanguageByIdThunk(learningId));
-    dispatch(getNewArr());
+    dispatch(addLearnLanguageSelectedLanguages());
   }, [learningLanguageData?.data?.nativeLanguages?.length]);
 
   useEffect(() => {
@@ -205,7 +203,7 @@ export const LearningLanguageUpdate = () => {
           </Form.Item>
         </Form>
       </div>
-      <div style={{ width: "44%" }}>
+      <div className="learnLanguageSelectedLanguages">
         <SelectLanguage dataLanguages={updateSelect} />
       </div>
     </div>

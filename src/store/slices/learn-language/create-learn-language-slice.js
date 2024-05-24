@@ -36,7 +36,7 @@ export const createLearnLanguageSlice = createSlice({
         (item) => item.key !== action.payload
       );
     },
-    removeAllLanguages: (state) => {
+    removeAllCreateSelectedLanguages: (state) => {
       state.selectedLanguages = [];
     },
     changeLearnLanguageCreateSuccess: (state) => {
@@ -66,7 +66,7 @@ export const {
   addLanguages,
   removeLanguagesItem,
   changeLearnLanguageCreateSuccess,
-  removeAllLanguages,
+  removeAllCreateSelectedLanguages,
   deleteLerningCreateResponse,
 } = createLearnLanguageSlice.actions;
 

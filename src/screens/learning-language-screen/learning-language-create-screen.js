@@ -5,23 +5,21 @@ import uploadImage from "../../assets/images/uploadImg.png";
 import { CustomAntdButton, CustomAntdInput } from "../../components";
 import { Colors } from "../../assets/colors";
 import "../../global-styles/global-styles.css";
+import "./learning-language-screen-style.css";
 import { SelectLanguage } from "./components/";
-import { nativeLanguageGetThunk } from "../../store/slices/native-language/native-language-get";
 import {
   createLearnLanguageThunk,
   deleteLerningCreateResponse,
   learnLanguageCreateResponse,
-  learnLanguagesCreateSuccess,
-  removeAllLanguages,
-} from "../../store/slices/learn-language/create-learn-language-slice";
-import { useNavigate } from "react-router-dom";
-import { Error, Success } from "../../components/custom-message/custom-message";
-import { learnLanguageSelectedLanguages } from "../../store/slices";
+  removeAllCreateSelectedLanguages,
+  nativeLanguageGetThunk,
+  learnLanguageSelectedLanguages,
+} from "../../store/slices";
+import { Error, Success } from "../../components";
 
 export const LearningLanguageCreateScreen = () => {
-  const [form] = Form.useForm();
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const [form] = Form.useForm();
   const formData = new FormData();
   const [learningLanguageFileList, setLearningLanguageFileList] = useState([]);
   const [learningLanguageFile, setLearningLanguageFile] = useState();
@@ -44,7 +42,6 @@ export const LearningLanguageCreateScreen = () => {
     if (values.learningLanguageImage.file != "") {
       formData.append("nameEng", values.nameEng);
       formData.append("name", values.name);
-      // formData.append("localization", values.learningLanguageImg);
       formData.append("image", learningLanguageFile);
       languages.forEach((item, ind) => {
         formData.append(`nativeLanguages[${ind}]`, item._id);
@@ -74,7 +71,7 @@ export const LearningLanguageCreateScreen = () => {
     createLearnLanguageResponse?.success === false &&
       Error({ messageApi, messageError });
     dispatch(deleteLerningCreateResponse());
-    dispatch(removeAllLanguages());
+    dispatch(removeAllCreateSelectedLanguages());
   }, [createLearnLanguageResponse?.success]);
 
   const props = {
@@ -88,10 +85,10 @@ export const LearningLanguageCreateScreen = () => {
 
   return (
     <div
-      className="authScreenMainDiv"
+      className="learnLanguageUpdateScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE, flexDirection: "row" }}
     >
-      <div>
+      <div className="learningLanguageUpdateFormDiv">
         <p className="nativeLanguageTitle">Add Learning Language</p>
         <Form
           autoComplete="off"
@@ -132,8 +129,8 @@ export const LearningLanguageCreateScreen = () => {
           </Form.Item>
         </Form>
       </div>
-      <div style={{ width: "44%" }}>
-        <SelectLanguage dataLanguages={languages}/>
+      <div className="learnLanguageSelectedLanguages">
+        <SelectLanguage dataLanguages={languages} />
       </div>
     </div>
   );

@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { Colors } from "../../assets/colors/colors";
 import "../../global-styles/index";
-import { CustomAddNew, CustomSelect, CustomTable, MyCustomTable } from "../../components";
+import {
+  CustomAddNew,
+  CustomSelect,
+  CustomTable,
+  MyCustomTable,
+} from "../../components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,18 +15,16 @@ import { getUserGetAllData, userGetAllThunk } from "../../store/slices";
 export const UserScreen = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const userData = useSelector(getUserGetAllData)?.data?.list;
-  console.log(userData,"loggggggggg")
   const tableData = [];
   const data = {
     skip: 0,
     limit: 12,
   };
   useEffect(() => {
-    dispatch(userGetAllThunk(data))
-  }, [])
-
+    dispatch(userGetAllThunk(data));
+  }, []);
 
   return (
     <div
