@@ -14,10 +14,10 @@ import {
   removeAllCreateSelectedLanguages,
   nativeLanguageGetThunk,
   learnLanguageSelectedLanguages,
+  removeLanguagesItem,
 } from "../../store/slices";
 import { Error, Success } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { learnLanguageSelectedLanguages } from "../../store/slices";
 
 export const LearningLanguageCreateScreen = () => {
   const dispatch = useDispatch();
