@@ -19,6 +19,9 @@ import {
   learnLanguageByIdSlice,
   learnLanguageUpdateSlice,
   getWordsSlice,
+  sendEmailSlice,
+  sendCodeSlice,
+  resetPasswordSlice,
 } from "./slices";
 import { categoryUpdateSlice } from "./slices/category/update-category";
 import { nativeLanguageGetIdSlice } from "./slices/native-language/get-id-native-language";
@@ -27,6 +30,9 @@ import { categoryGetIdSlice } from "./slices/category/get-id-category";
 export const store = configureStore({
   reducer: {
     loginSlice: loginSlice.reducer,
+    sendEmailSlice: sendEmailSlice.reducer,
+    sendCodeSlice: sendCodeSlice.reducer,
+    resetPasswordSlice: resetPasswordSlice.reducer,
     createNativeSlice: nativeLanguageCreateSlice.reducer,
     getNativeSlice: nativeLanguageGetSlice.reducer,
     nativeLanguageDeleteSlice: nativeLanguageDeleteSlice.reducer,

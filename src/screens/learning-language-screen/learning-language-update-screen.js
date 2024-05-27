@@ -15,7 +15,6 @@ import {
   deleteLearnBool,
   deleteLearnUpdateBool,
   getLearnLanguageByIdResponse,
-  addLearnLanguageSelectedLanguages,
   getUpdatedLanguages,
   getUpdatedLearnLanguageBool,
   getUpdatedLearnLanguageLoading,
@@ -25,9 +24,11 @@ import {
   learnLanguageDeleteThunk,
   learnLanguageUpdateThunk,
   nativeLanguageGetThunk,
+  removeUpdateLanguagesItem,
 } from "../../store/slices";
 import { useTranslation } from "react-i18next";
 import { SelectLanguage } from "./components";
+import CustomModal from "../../components/custom-modal/custom-modal";
 
 export const LearningLanguageUpdate = () => {
   const fileList = [];
@@ -50,6 +51,9 @@ export const LearningLanguageUpdate = () => {
   const learningData = learningLanguageData?.data;
   const lerningLangAllData = useSelector(getUpdatedLanguages);
   const updateSelect = useSelector(getUpdatedLanguages);
+  const updateSelectedLanguages = useSelector(getUpdatedLanguages);
+  const nativeLanguagesLoading = useSelector(getNativeGetloading);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const onFinish = (values) => {
     if (values.image.file != "") {
@@ -69,12 +73,20 @@ export const LearningLanguageUpdate = () => {
     }
   };
 
+  const onDelete = () => {
+    dispatch(learnLanguageDeleteThunk(learningData?.id));
+  };
+
   const handleChange = (info) => {
     setLearningLanguageFile(info.file);
     setShowLearningLanguageUpload(info.fileList[0]);
     if (!info.fileList[0]) {
       info.file = "";
     }
+  };
+
+  const showModal = () => {
+    setIsModalOpen(true);
   };
 
   const beforeUpload = () => {
@@ -124,15 +136,18 @@ export const LearningLanguageUpdate = () => {
       style={{ backgroundColor: Colors.WHITE }}
     >
       <div className="learningLanguageUpdateFormDiv">
+        <CustomModal
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          onTab={onDelete}
+        />
         <p className="nativeLanguageTitle">{t("UPDATE_LEARNING_LANGUAGE")}</p>
         <Form
           autoComplete="off"
           form={form}
           name="control-hooks"
           onFinish={onFinish}
-          style={{
-            maxWidth: 600,
-          }}
+          className="formAntd"
         >
           <p>{t("LANGUAGE_ENGLISH_NAME")}</p>
           <CustomAntdInput
@@ -196,7 +211,7 @@ export const LearningLanguageUpdate = () => {
                 title="Delete"
                 background={Colors.GRAY_COLOR}
                 onClick={() => {
-                  dispatch(learnLanguageDeleteThunk(learningData?.id));
+                  showModal();
                 }}
               />
             </div>
@@ -205,6 +220,13 @@ export const LearningLanguageUpdate = () => {
       </div>
       <div className="learnLanguageSelectedLanguages">
         <SelectLanguage dataLanguages={updateSelect} />
+        <SelectLanguage
+          languages={updateSelectedLanguages}
+          onDelete={(id) => {
+            dispatch(removeUpdateLanguagesItem(id));
+          }}
+          loading={nativeLanguagesLoading}
+        />
       </div>
     </div>
   );

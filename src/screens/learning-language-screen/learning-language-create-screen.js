@@ -16,6 +16,8 @@ import {
   learnLanguageSelectedLanguages,
 } from "../../store/slices";
 import { Error, Success } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { learnLanguageSelectedLanguages } from "../../store/slices";
 
 export const LearningLanguageCreateScreen = () => {
   const dispatch = useDispatch();
@@ -85,7 +87,7 @@ export const LearningLanguageCreateScreen = () => {
 
   return (
     <div
-      className="learnLanguageUpdateScreenMainDiv"
+      className="authScreenMainDiv learnLanguageCreateScreenMainDiv"
       style={{ backgroundColor: Colors.WHITE, flexDirection: "row" }}
     >
       <div className="learningLanguageUpdateFormDiv">
@@ -95,6 +97,7 @@ export const LearningLanguageCreateScreen = () => {
           form={form}
           name="createLearningLanguage"
           onFinish={onFinish}
+          className="formAntd"
         >
           <div className="createScreenRowInputs">
             <CustomAntdInput name="name" placeholder="Language English Name*" />
@@ -131,6 +134,12 @@ export const LearningLanguageCreateScreen = () => {
       </div>
       <div className="learnLanguageSelectedLanguages">
         <SelectLanguage dataLanguages={languages} />
+        <SelectLanguage
+          languages={languages}
+          onDelete={(id) => {
+            dispatch(removeLanguagesItem(id));
+          }}
+        />
       </div>
     </div>
   );
