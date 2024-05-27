@@ -7,7 +7,12 @@ import {
 
 const { Option } = Select;
 
-export const CustomSelect = ({ title, optionsData, languagesData }) => {
+export const CustomSelect = ({
+  title,
+  optionsData,
+  width,
+  backgroundColor,
+}) => {
   const dispatch = useDispatch();
 
   const handleChange = (value) => {
@@ -22,6 +27,7 @@ export const CustomSelect = ({ title, optionsData, languagesData }) => {
         onChange={handleChange}
         className="customSelect"
         defaultValue={title}
+        style={{ width: width, backgroundColor: backgroundColor }}
       >
         {optionsData?.map((option) => (
           <Option key={option._id} value={option.name}>

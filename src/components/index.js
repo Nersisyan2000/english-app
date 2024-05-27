@@ -18,3 +18,4 @@ export * from "./custom-antd-delete-button";
 export * from "./custom-modal";
 export * from "./custom-message";
 export * from "./custom-spin";
+export * from "./custom-antd-select";

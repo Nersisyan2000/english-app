@@ -10,7 +10,7 @@ let num = 1;
 
 export const customTableColumns = [
   {
-    title: "ID",
+    title: "Word",
     dataIndex: "_id",
     key: "_id",
     render: (text) => {
@@ -18,29 +18,32 @@ export const customTableColumns = [
       num++;
       return newTag;
     },
+    className: "column-id",
   },
   {
-    title: "User",
+    title: "Language",
     dataIndex: "firstName",
     key: "firstName",
   },
   {
-    title: "Email",
+    title: "Translate",
     dataIndex: "email",
     key: "email",
+    className: "column-email",
   },
   {
-    title: "Phone",
+    title: "Category",
     dataIndex: "phoneNumber",
     key: "phoneNumber",
   },
   {
-    title: "Device ID",
+    title: "Level",
     dataIndex: "devices",
     key: "devices",
+    className: "column-device-id",
   },
   {
-    title: "Country",
+    title: "Status",
     key: "country",
     dataIndex: "country",
     render: () => (

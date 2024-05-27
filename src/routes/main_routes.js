@@ -20,6 +20,7 @@ import {
   UserCreateScreen,
   UpdateNativeLanguage,
   LearningLanguageUpdate,
+  WordsCreateScreen,
 } from "../screens";
 import { CustomHeader, CustomSidebar, StatisticsScreen } from "../components";
 import { getToken } from "../store/slices/auth/login-slice";
@@ -53,22 +54,42 @@ export const MyRoutes = () => {
             <Route element={<CustomSidebar />}>
               <Route path="/dashboard" element={<DashboardScreen />} />
               <Route path="/statistics" element={<StatisticsScreen />} />
-              <Route path="/native-language" element={<NativeLanguageScreen />} />
-              <Route  path="/native-language-create" element={<NativeLanguageCretae />}/>
-              <Route path="/words" element={<WordsScreen />} />
-              <Route path="/learning-language" element={<LearningLanguageScreen />}/>
-              <Route  path="/native-language-create" element={<NativeLanguageCretae />} />
+              <Route
+                path="/native-language"
+                element={<NativeLanguageScreen />}
+              />
+              <Route
+                path="/native-language-create"
+                element={<NativeLanguageCretae />}
+              />
+
+              <Route
+                path="/learning-language"
+                element={<LearningLanguageScreen />}
+              />
+              <Route
+                path="/native-language-create"
+                element={<NativeLanguageCretae />}
+              />
               <Route path="/category" element={<CategoryScreen />} />
-              <Route path="/category-update" element={<CategoryUpdate />}/>
+              <Route path="/category-update" element={<CategoryUpdate />} />
               <Route path="/category-create" element={<CategoryCretae />} />
               <Route path="/user" element={<UserScreen />} />
               <Route path="/feedback" element={<FeedbackScreen />} />
               <Route path="/notification" element={<NotificationScreen />} />
               <Route path="/files" element={<FilesScreen />} />
               <Route path="/user-create" element={<UserCreateScreen />} />
-              <Route  path="/learning-language-create"  element={<LearningLanguageCreateScreen />} />
+              <Route
+                path="/learning-language-create"
+                element={<LearningLanguageCreateScreen />}
+              />
               <Route path="/native-update" element={<UpdateNativeLanguage />} />
-              <Route  path="/learning-update" element={<LearningLanguageUpdate />} />
+              <Route
+                path="/learning-update"
+                element={<LearningLanguageUpdate />}
+              />
+              <Route path="/words" element={<WordsScreen />} />
+              <Route path="/create-word" element={<WordsCreateScreen />} />
             </Route>
           </Route>
         </Routes>

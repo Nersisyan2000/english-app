@@ -1,19 +1,22 @@
+import React, { useState, useEffect } from "react";
 import { Colors } from "../../assets/colors";
 import { Form, message } from "antd";
 import { useDispatch, useSelector } from "react-redux";
-import { CustomAntdButton } from "../../components/custom-antd-button/custom-antd-button";
-import { CustomSelect, CustomAntdInput } from "../../components";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import "./user-screen.css";
 import { useTranslation } from "react-i18next";
 import {
   deleteUserCreateResponse,
   getUserCreateData,
   userCreateThunk,
 } from "../../store/slices/user/create-user";
-import CsutomAntdSelect from "../../components/custom-antd-select/custom-antd-select";
-import { Error, Success } from "../../components/custom-message/custom-message";
+import {
+  Error,
+  Success,
+  CustomAntdSelect,
+  CustomAntdButton,
+  CustomAntdInput,
+} from "../../components";
+import "./user-screen.css";
 
 export const UserCreateScreen = () => {
   const [form] = Form.useForm();
@@ -117,10 +120,11 @@ export const UserCreateScreen = () => {
             type="password"
             min={6}
           />
-          <CsutomAntdSelect
+          <CustomAntdSelect
             optinData={data}
             setSelected={setSelected}
             selected={selected}
+            defaultValue="Role"
           />
         </div>
         <Form.Item>
