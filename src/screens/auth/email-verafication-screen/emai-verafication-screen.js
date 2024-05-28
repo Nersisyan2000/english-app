@@ -66,7 +66,7 @@ export const EmailVeraficationScreen = () => {
           }}
           onComplete={(value) => {
             dispatch(saveCode(value));
-            localStorage.setItem("code", "823396");
+            localStorage.setItem("code", "112233");
             dispatch(sendCodeThunk({ email, value }));
           }}
           autoSelect={true}

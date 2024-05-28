@@ -12,7 +12,6 @@ export const CustomAntdSelect = ({
   const handleChange = (value) => {
     setSelected(value);
   };
-  console.log(width, "width");
 
   return (
     <div className="antd_custom_select">

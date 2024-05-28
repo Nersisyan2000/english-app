@@ -33,7 +33,6 @@ export const sendEmailSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(sendEmailThunk.pending, (state) => {
-      console.log("hello");
       state.sendEmailLoading = true;
     });
     builder.addCase(sendEmailThunk.fulfilled, (state, { payload }) => {

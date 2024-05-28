@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { CustomInputField, CustomButton } from "../../../components";
 import { Colors } from "../../../assets/colors/index";
 import { useTranslation } from "react-i18next";
 import {
+  deleteResponse,
   resetPasswordLoading,
+  resetPasswordResponse,
   resetPasswordThunk,
   savedCode,
   savedEmail,
 } from "../../../store/slices";
 import "../../../global-styles/global-styles.css";
 import { resetPasswordValidation } from "../../../validations";
+import { useNavigate } from "react-router-dom";
 
 export const ResetSendPasswordScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { t } = useTranslation();
   const reduxCode = useSelector(savedCode);
   const storageCode = localStorage.getItem("code");
@@ -23,6 +27,14 @@ export const ResetSendPasswordScreen = () => {
   const storageEmail = localStorage.getItem("email");
   const email = reduxEmail ? reduxEmail : storageEmail;
   const resetPasswordLoadingData = useSelector(resetPasswordLoading);
+  const responseResetPassword = useSelector(resetPasswordResponse);
+
+
+useEffect(()=>{
+if(responseResetPassword?.success === true){
+  navigate("/")
+}
+},[responseResetPassword])
 
   return (
     <div
@@ -48,7 +60,11 @@ export const ResetSendPasswordScreen = () => {
             handleSubmit,
           }) => (
             <form onSubmit={handleSubmit} autoComplete="off">
+              <p className="errorMessage">{responseResetPassword?.message}</p>
               <CustomInputField
+              onFocus={()=>{
+                dispatch(deleteResponse())
+              }}
                 type="password"
                 name="password"
                 placeholder={t("NEW_PASSWORD")}
@@ -61,6 +77,9 @@ export const ResetSendPasswordScreen = () => {
                 {errors.password && touched.password && errors.password}
               </p>
               <CustomInputField
+               onFocus={()=>{
+                dispatch(deleteResponse())
+              }}
                 type="password"
                 name="confirmPassword"
                 placeholder={t("CONFIRM_PASSWORD")}

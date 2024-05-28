@@ -20,6 +20,8 @@ export const CategoryScreen = () => {
     skip: 0,
     limit: 12,
   };
+  const pageLength = 12;
+
 
   useEffect(() => {
     dispatch(categoryGetThunk(data));
@@ -71,7 +73,7 @@ export const CategoryScreen = () => {
       
       </div>
       <div className="category-pagination">
-          <CustomPagination length={categoryData?.length} />
+          <CustomPagination length={categoryData?.length} pageLength={pageLength}/>
         </div>
     </div>
   );

@@ -38,8 +38,6 @@ export const createLearnLanguageSlice = createSlice({
     },
     removeAllCreateSelectedLanguages: (state) => {},
     removeAllLanguages: (state) => {
-      console.log("aall");
-
       state.selectedLanguages = [];
     },
     changeLearnLanguageCreateSuccess: (state) => {

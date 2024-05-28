@@ -5,7 +5,6 @@ import voicUploadIcon from "../../../../../../assets/images/upload-voice-icon.sv
 export const VoiceUpload = () => {
   const [file, setFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState("");
-  console.log(file, "file");
 
   const handleFileChange = (e) => {
     if (!file) {
