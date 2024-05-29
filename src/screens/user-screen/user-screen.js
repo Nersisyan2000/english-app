@@ -5,8 +5,6 @@ import {
   CustomAddNew,
   CustomPagination,
   CustomSelect,
-  CustomTable,
-  MyCustomTable,
 } from "../../components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -19,11 +17,10 @@ import { ResponsiveTable } from "responsive-table-react";
 export const UserScreen = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const tableData = [];
+  const pageLength = 5;
   const dispatch = useDispatch();
   const userData = useSelector(getUserGetAllData)?.data;
   const dataList = userData?.list;
-  console.log(dataList, "liff");
   const data = {
     skip: 0,
     limit: 5,
@@ -118,7 +115,9 @@ export const UserScreen = () => {
         {userData?.list?.map((item,index)=>{
           console.log(item,"log item")
           return(
-            <Tr>
+            <Tr onClick={()=>{
+              navigate("/")
+            }}>
               <Td>{index+1}</Td>
               <Td>{item?.firstName}</Td>
               <Td>{item?.email}</Td>
@@ -137,7 +136,7 @@ export const UserScreen = () => {
         {/* <CustomTable tableData={userData?.list} /> */}
       </div>
       <div className="nativeScreenPaginationDiv">
-        <CustomPagination length={userData?.total} />
+        <CustomPagination length={userData?.total} pageLength={pageLength} />
       </div>
     </div>
   );

@@ -20,6 +20,7 @@ export const LearningLanguageScreen = () => {
   const dispatch = useDispatch();
   const learningLanguagesData = useSelector(learningLanguages);
   const learnLanguagesLoading = useSelector(getLearnLanguagesLoading);
+  const pageLength = 12;
 
   const navigateToCreateScreen = () => {
     navigate("/learning-language-create");
@@ -74,7 +75,7 @@ export const LearningLanguageScreen = () => {
         )}
       </div>
       <div className="learningLanguageScreenPaginationDiv">
-        <CustomPagination length={learningLanguagesData?.data?.total}/>
+        <CustomPagination length={learningLanguagesData?.data?.total} pageLength={pageLength}/>
       </div>
     </div>
   );

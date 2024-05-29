@@ -16,6 +16,7 @@ export const WordsScreen = () => {
   const dispatch = useDispatch();
   const wordsResponse = useSelector(wordsResponseData);
   const wordsLoading = useSelector(wordsLoadingData);
+  const pageLength = 12;
 
   useEffect(() => {
     const data = {
@@ -37,7 +38,7 @@ export const WordsScreen = () => {
         <CustomTable />
       </div>
       <div className="wordsPagination">
-        <CustomPagination />
+        <CustomPagination pageLength={pageLength}/>
       </div>
     </div>
   );

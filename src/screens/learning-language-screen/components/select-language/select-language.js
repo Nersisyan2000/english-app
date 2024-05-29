@@ -42,28 +42,7 @@ export const SelectLanguage = ({ languages, onDelete, loading }) => {
           optionsData={filteredResponse}
         />
         <div className="selectLanguageValuesDiv">
-          {loading ? (
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: 20,
-                width: "100%",
-              }}
-            >
-              <span className="selectedLanguageName">{lang.name}</span>
-              <img src={lang.image} />
-              <div
-                className="deleteIcon"
-                onClick={() => {
-                  onDelete(lang._id);
-                }}
-              >
-                <span>x</span>
-              </div>
-              <CustomSpin color={Colors.ICON_COLOR} size={38} />
-            </div>
-          ) : (
+          {
             languages?.map((lang) => {
               return (
                 <div
@@ -84,9 +63,32 @@ export const SelectLanguage = ({ languages, onDelete, loading }) => {
                 </div>
               );
             })
-          )}
+          }
         </div>
       </div>
     );
   };
 };
+
+// loading ? (
+//   <div
+//     style={{
+//       display: "flex",
+//       justifyContent: "center",
+//       marginTop: 20,
+//       width: "100%",
+//     }}
+//   >
+//     <span className="selectedLanguageName">{lang.name}</span>
+//     <img src={lang.image} />
+//     <div
+//       className="deleteIcon"
+//       onClick={() => {
+//         onDelete(lang._id);
+//       }}
+//     >
+//       <span>x</span>
+//     </div>
+//     <CustomSpin color={Colors.ICON_COLOR} size={38} />
+//   </div>
+// ) : (

@@ -54,7 +54,7 @@ export const ResetPasswordEmail = () => {
           }) => (
             <form onSubmit={handleSubmit} autoComplete="off">
               <CustomInputField
-                type="text"
+                type="email"
                 name="email"
                 placeholder={t("EMAIL")}
                 onChange={handleChange}
