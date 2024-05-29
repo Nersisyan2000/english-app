@@ -19,3 +19,4 @@ export * from "./custom-modal";
 export * from "./custom-message";
 export * from "./custom-spin";
 export * from "./custom-antd-select";
+export * from "./custom-upload";
