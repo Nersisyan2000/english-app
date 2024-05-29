@@ -5,20 +5,20 @@ import {
   CustomAddNew,
   CustomPagination,
   CustomSelect,
+  CustomSpin,
 } from "../../components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserGetAllData, userGetAllThunk } from "../../store/slices";
-import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import { getUserGetAllData, getUserGetAllLoading, userGetAllThunk, userGetByIdThunk } from "../../store/slices";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { ResponsiveTable } from "responsive-table-react";
 
 export const UserScreen = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const pageLength = 5;
   const dispatch = useDispatch();
+  const userGetLoading = useSelector(getUserGetAllLoading);
   const userData = useSelector(getUserGetAllData)?.data;
   const dataList = userData?.list;
   const data = {
@@ -28,6 +28,12 @@ export const UserScreen = () => {
   useEffect(() => {
     dispatch(userGetAllThunk(data));
   }, []);
+
+  const userUpdate = (id) => {
+    localStorage.setItem("userId",id);
+    dispatch(userGetByIdThunk(id));
+    navigate("/user-update");
+  }
 
   const columns = [
     {
@@ -55,26 +61,18 @@ export const UserScreen = () => {
       key: "devices",
     },
     {
+      text: "Country",
+      id: "phoneNumber",
+      key: "devices",
+    },
+    {
       text: "Status",
       id: "phoneNumber",
       key: "devices",
     },
   ];
 
-  const dataTable = [
-    {
-      name: "Mark",
-      surname: "Garsin",
-    },
-    {
-      name: "Gabriel",
-      surname: "Betappi",
-    },
-    {
-      name: "Gustav",
-      surname: "Mahler",
-    },
-  ];
+ 
   return (
     <div
       className="nativeLanguageScreenMainDiv"
@@ -95,45 +93,36 @@ export const UserScreen = () => {
           </div>
           <CustomSelect title={t("VERIFED_BY_EMAIL")} />
         </div>
-        <ResponsiveTable
-          columns={columns}
-          data={dataList != null ? dataList : dataTable}
-        />
-        {/* <Table>
-      <Thead>
-        <Tr>
-          <Th>ID</Th>
-          <Th>User</Th>
-          <Th>Email</Th>
-          <Th>Phone</Th>
-          <Th>Device ID</Th>
-          <Th>Country</Th>
-          <Th>Status</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {userData?.list?.map((item,index)=>{
-          console.log(item,"log item")
-          return(
-            <Tr onClick={()=>{
-              navigate("/")
-            }}>
-              <Td>{index+1}</Td>
-              <Td>{item?.firstName}</Td>
-              <Td>{item?.email}</Td>
-              <Td>{item?.phoneNumber}</Td>
-              <Td>{item?.devices?.length}</Td>
-              <Td>{item?.lastName}</Td>
-              <Td>{item?.phoneNumber}</Td>
-        </Tr>
-          )
-        })}
-       
-        
-      </Tbody>
-    </Table> */}
 
-        {/* <CustomTable tableData={userData?.list} /> */}
+       {userGetLoading ? <div className="loadingDiv nativeLanguageScreenMainDiv">
+         <CustomSpin size={64} color="gray" /> 
+         </div>: <div class="container">
+          <ul class="responsive-table">
+            <li class="table-header">
+              {columns?.map((item) => {
+                return (
+                  <div class="col col-1 label">{item?.text}</div>
+                )
+              })}
+            </li>
+            {dataList?.map((val, index) => {
+              return (
+                <li class="table-row" onClick={()=>{
+                  userUpdate(val?._id)
+                }}>
+                  <div class="col col-1 desc" data-label="Job Id">{index + 1}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.firstName}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.email}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.phoneNumber}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.firstName}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.phoneNumber}</div>
+                  <div class="col col-1 desc" data-label="Job Id">{val?.firstName}</div>
+                </li>
+              )
+            })}
+          </ul>
+        </div>}
+
       </div>
       <div className="nativeScreenPaginationDiv">
         <CustomPagination length={userData?.total} pageLength={pageLength} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Select, Space } from "antd";
+import { Form, Select, Space } from "antd";
 import "./custom-antd-select.css";
 
 export const CustomAntdSelect = ({
@@ -8,24 +8,27 @@ export const CustomAntdSelect = ({
   defaultValue,
   width,
   color,
+  name
 }) => {
   const handleChange = (value) => {
     setSelected(value);
   };
 
   return (
-    <div className="antd_custom_select">
-      <Space wrap>
+    <div className="antd_custom_select_user">
+      <Form.Item
+      name={name}>
         <Select
           onChange={handleChange}
           defaultValue={defaultValue}
           style={{
             color: color,
+            width:`${width}`
           }}
           allowClear
           options={optinData}
         />
-      </Space>
+      </Form.Item>
     </div>
   );
 };

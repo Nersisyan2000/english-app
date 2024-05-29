@@ -1,4 +1,4 @@
-.ant-table-wrapper .ant-table-thead tr th {
+/* .ant-table-wrapper .ant-table-thead tr th {
   background-color: transparent;
   border: none;
 }
@@ -18,9 +18,9 @@ tr:nth-child(n) {
 }
 
 .custom-row-class td {
-  padding: 16px; /* Adjust padding as needed */
+  padding: 16px; 
 }
 
 .table-wrapper {
-  margin: 20px; /* Adjust margin as needed */
-}
+  margin: 20px; 
+} */

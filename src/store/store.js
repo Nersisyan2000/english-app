@@ -41,7 +41,7 @@ export const store = configureStore({
     categoryCreateSlice: categoryCreateSlice.reducer,
     userCreateSlice: userCreateSlice.reducer,
     userDeleteSlice: userDeleteSlice.reducer,
-    userUpdateSlice: userUpdateSlice.reducer,
+    userUpdateSliceStore: userUpdateSlice.reducer,
     userGetAllSlice: userGetAllSlice.reducer,
     userGetByIdSlice: userGetByIdSlice.reducer,
     categoryDeleteSlice: categoryDeleteSlice.reducer,

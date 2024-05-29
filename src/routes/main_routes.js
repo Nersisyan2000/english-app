@@ -26,6 +26,7 @@ import { CustomHeader, CustomSidebar, StatisticsScreen } from "../components";
 import { getToken } from "../store/slices/auth/login-slice";
 import { useSelector } from "react-redux";
 import { CategoryUpdate } from "../screens/category-screen/category-update";
+import { UserScreenUpdate } from "../screens/user-screen/user-screen-update";
 
 export const MyRoutes = () => {
   const token = localStorage.getItem("token");
@@ -79,6 +80,8 @@ export const MyRoutes = () => {
               <Route path="/notification" element={<NotificationScreen />} />
               <Route path="/files" element={<FilesScreen />} />
               <Route path="/user-create" element={<UserCreateScreen />} />
+              <Route path="/user-update" element={<UserScreenUpdate />} />
+
               <Route
                 path="/learning-language-create"
                 element={<LearningLanguageCreateScreen />}
