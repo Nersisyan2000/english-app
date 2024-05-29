@@ -1,6 +1,10 @@
 import React from "react";
 import "./create-words-add-style.css";
-import { CustomAntdInput, CustomAntdSelect } from "../../../../../components";
+import {
+  CustomAntdInput,
+  CustomAntdSelect,
+  CustomUpload,
+} from "../../../../../components";
 import { Colors } from "../../../../../assets/colors";
 import { VoiceUpload } from "./components/voic-upload";
 
@@ -50,13 +54,13 @@ export const CreateWordsAdd = ({
           message={"This field is required"}
         />
         <CustomAntdSelect
-          width={172}
+          // width={172}
           defaultValue="Level*"
           optinData={data}
           setSelected={setSelectedLevel}
         />
         <CustomAntdSelect
-          width={172}
+          // width={172}
           defaultValue="Category*"
           optinData={data}
           setSelected={setSelectedCategory}
@@ -64,6 +68,9 @@ export const CreateWordsAdd = ({
       </div>
       <div>
         <VoiceUpload />
+      </div>
+      <div>
+        <CustomUpload />
       </div>
     </div>
   );
